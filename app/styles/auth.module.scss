@@ -11,14 +11,12 @@
   margin: 0 auto;
   font-family: "Avenir Next", sans-serif;
   @media (width >= 768px) {
-    padding-left: 4rem;
-    padding-right: 10rem;
+    // padding-left: 4rem;
+    // padding-right: 10rem;
+    // width: 100%;
   }
 
   &_logocont {
-    display: inline-flex;
-    height: auto;
-    align-items: flex-start;
     width: 30%;
   }
 
@@ -119,7 +117,6 @@
     &_main {
       display: flex;
       align-items: center;
-      // justify-content: center;
       flex-direction: row;
       gap: 5rem;
 
@@ -128,9 +125,8 @@
         flex-direction: column;
         gap: 7.5rem;
         align-items: flex-start;
-        width: 50%;
         height: 100vh;
-        padding-right: 1rem;
+        padding-right: 3rem;
         padding-top: 4rem;
         box-shadow: inset -20px -8px 68px -70px rgba(214, 201, 214, 1);
         animation: leftFade 2s ease 0s 1 normal forwards;
@@ -149,18 +145,20 @@
       }
     }
     &_leftCont {
-      display: flex;
-      width: 95%;
-
+      display: block;
+      // padding-right: 1rem;
       &_image {
         width: 100%;
       }
     }
     &_logocont {
       padding-left: 2rem;
+      width: fit-content;
     }
 
     &_rightCont {
+      // background-color: orange;
+      padding-right: 3rem;
       width: 50%;
       gap: 3rem;
       align-items: start;
