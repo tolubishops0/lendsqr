@@ -74,15 +74,23 @@
   }
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   .inputfield {
     height: $inputfield-height;
     p {
-      left: 90%;
+      left: 80%;
     }
   }
   .button {
     height: $inputfield-height;
     margin-top: 0.5rem;
+  }
+}
+@media (min-width: 1100px) {
+  .inputfield {
+    height: $inputfield-height;
+    p {
+      left: 90%;
+    }
   }
 }
