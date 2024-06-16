@@ -1,15 +1,8 @@
 import React from "react";
-import Image from "next/image";
-import { logoimg, signinimg } from "../lib/lib";
+import SignIn from "../components/SignIn/SignIn";
 
 const SignIn = () => {
-  return (
-    <div>
-      <div>
-        <Image src={logoimg} alt="logo" />{" "}
-      </div>
-    </div>
-  );
+  return <SignIn />;
 };
 
 export default SignIn;

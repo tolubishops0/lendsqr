@@ -1,9 +1,103 @@
 @import "fonts.module";
+@import "variables.scss";
 
-.title {
-  font-family: "Avenir Next", sans-serif; /* Apply custom font to header */
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 3.415rem;
-  color: #213f7d;
+.signin {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  font-family: "Avenir Next", sans-serif;
+
+  &_logocont {
+    display: flex;
+    justify-content: left;
+    width: 30%;
+    height: auto;
+  }
+
+  &_logoimg {
+    width: 100%;
+  }
+
+  &__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+  }
+
+  &_leftCont {
+    width: 100%;
+    display: none;
+  }
+
+  &_rightCont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: red;
+
+    &_header {
+      color: $primary-header-color;
+      font-size: $auth-header-font-size;
+      font-weight: $auth-header-font-weight;
+      line-height: $auth-header-line-height;
+      letter-spacing: $auth-header-letter-spacing;
+    }
+
+    &_text {
+      color: $secondary-header-color;
+      font-size: $secondary-header-font-size;
+      font-weight: $secondary-header-font-weight;
+      line-height: $secondary-header-line-height;
+    }
+
+    &_inputCont {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.2rem;
+
+      &_input {
+        width: 100%;
+        height: $inputfield-height-mobile;
+        border-color: $inputfield-border-color;
+        border-radius: $inputfield-border-radius;
+        border-width: $inputfield-border-width;
+        border-style: solid;
+        padding-left: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: darken($inputfield-border-color, 10%);
+        }
+        &::placeholder {
+          color: $secondary-header-color;
+          font-size: $inputfield-placeholder-font-size-mobile;
+          font-weight: $secondary-header-font-weight;
+          line-height: $secondary-header-line-height;
+        }
+      }
+      &_forgotPassword {
+        color: $font-color-light-Green;
+        font-size: $small-font-size;
+        font-weight: $semi-bold-font-weight;
+        line-height: $small-text-line-height;
+        letter-spacing: $button-text-letter-spacing;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media (width >= 768px) {
+    &_logocont {
+      background-color: green;
+    }
+  }
 }
