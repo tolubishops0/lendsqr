@@ -2,6 +2,7 @@ export interface InputFieldProps {
   type?: string;
   placeholder?: string;
   value?: string | number;
+  error?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

@@ -1,6 +1,11 @@
 @import "fonts.module";
 @import "variables.scss";
 
+.errorText {
+  color: $red-text;
+  font-size: $small-font-size;
+}
+
 .signin {
   width: 85%;
   margin: 0 auto;
