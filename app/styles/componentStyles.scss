@@ -1,0 +1,88 @@
+@import "variables.scss";
+
+.input-field-cont {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputfield {
+  width: 100%;
+  height: $inputfield-height;
+  border-color: $inputfield-border-color;
+  border-radius: $inputfield-border-radius;
+  border-width: $inputfield-border-width;
+  border-style: solid;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-left: 0.5rem;
+
+  p {
+    position: absolute;
+    top: 35%;
+    left: 85%;
+    color: $font-color-light-Green;
+    font-size: $small-font-size;
+    font-weight: $semi-bold-font-weight;
+    line-height: $small-text-line-height;
+    letter-spacing: $button-text-letter-spacing;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    &:focus {
+      outline: none;
+      border-color: darken($inputfield-border-color, 10%);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: darken($inputfield-border-color, 10%);
+  }
+  &::placeholder {
+    color: $secondary-header-color;
+    font-size: $inputfield-placeholder-font-size-mobile;
+    font-weight: $secondary-header-font-weight;
+    line-height: $secondary-header-line-height;
+  }
+}
+
+.button {
+  width: 100%;
+  height: $inputfield-height;
+  border-radius: $inputfield-border-radius;
+  box-shadow: $button-box-shadow;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  &-signup {
+    background-color: $font-color-light-Green;
+    color: white;
+    border: $font-color-light-Green;
+    font-weight: $secondary-header-font-weight;
+    font-size: $inputfield-placeholder-font-size;
+    letter-spacing: $button-text-letter-spacing;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $button-box-shadow-hover;
+    }
+  }
+}
+
+@media (width >= 768px) {
+  .inputfield {
+    height: $inputfield-height;
+    p {
+      left: 90%;
+    }
+  }
+  .button {
+    height: $inputfield-height;
+    margin-top: 0.5rem;
+  }
+}
