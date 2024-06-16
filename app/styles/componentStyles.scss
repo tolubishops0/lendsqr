@@ -8,7 +8,7 @@
 
 .inputfield {
   width: 100%;
-  height: $inputfield-height-mobile;
+  height: $inputfield-height;
   border-color: $inputfield-border-color;
   border-radius: $inputfield-border-radius;
   border-width: $inputfield-border-width;
@@ -20,8 +20,8 @@
 
   p {
     position: absolute;
-    top: 25%;
-    left: 90%;
+    top: 35%;
+    left: 85%;
     color: $font-color-light-Green;
     font-size: $small-font-size;
     font-weight: $semi-bold-font-weight;
@@ -54,11 +54,11 @@
 
 .button {
   width: 100%;
-  height: $inputfield-height-mobile;
+  height: $inputfield-height;
   border-radius: $inputfield-border-radius;
   box-shadow: $button-box-shadow;
   transition: background-color 0.3s, box-shadow 0.3s;
-  
+
   &-signup {
     background-color: $font-color-light-Green;
     color: white;
@@ -71,5 +71,15 @@
     &:hover {
       box-shadow: $button-box-shadow-hover;
     }
+  }
+}
+
+@media (width >= 768px) {
+  .inputfield,
+  .button {
+    height: $inputfield-height;
+  }
+  .button {
+    margin-top: 1rem;
   }
 }

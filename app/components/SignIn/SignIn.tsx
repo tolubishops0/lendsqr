@@ -21,14 +21,20 @@ const SignIn = () => {
 
   return (
     <div className={style.signin}>
-      <div className={style.signin_logocont}>
-        <Image className={style.signin_logoimg} src={logoimg} alt="logo" />
-      </div>
-
       <main className={style.signin_main}>
-        <div className={style.signin_leftCont}>
-          <Image src={signinimg} alt="signinimg" />
+        <div className={style.signin_main_left}>
+          <div className={style.signin_logocont}>
+            <Image className={style.signin_logoimg} src={logoimg} alt="logo" />
+          </div>
+          <div className={style.signin_leftCont}>
+            <Image
+              src={signinimg}
+              alt="signinimg"
+              layout="responsive"
+            />
+          </div>
         </div>
+
         <div className={style.signin_rightCont}>
           <div>
             <h1 className={style.signin_rightCont_header}>Welcome!</h1>

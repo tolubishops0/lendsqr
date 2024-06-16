@@ -2,29 +2,25 @@
 @import "variables.scss";
 
 .signin {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
-  padding-top: 2rem;
   font-family: "Avenir Next", sans-serif;
 
   &_logocont {
-    display: flex;
-    justify-content: left;
-    width: 30%;
+    display: inline-flex;
     height: auto;
+    align-items: flex-start;
   }
 
   &_logoimg {
     width: 100%;
   }
 
-  &__main {
+  &_main {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: yellow;
+    &_left {
+      padding-top: 3rem;
+    }
   }
 
   &_leftCont {
@@ -34,12 +30,12 @@
 
   &_rightCont {
     width: 100%;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    background-color: red;
+    gap: 4rem;
 
     &_header {
       color: $primary-header-color;
@@ -54,6 +50,7 @@
       font-size: $secondary-header-font-size;
       font-weight: $secondary-header-font-weight;
       line-height: $secondary-header-line-height;
+      margin-top: 0.5rem;
     }
 
     &_inputCont {
@@ -65,7 +62,7 @@
 
       &_input {
         width: 100%;
-        height: $inputfield-height-mobile;
+        height: $inputfield-height;
         border-color: $inputfield-border-color;
         border-radius: $inputfield-border-radius;
         border-width: $inputfield-border-width;
@@ -96,8 +93,35 @@
   }
 
   @media (width >= 768px) {
-    &_logocont {
-      background-color: green;
+    &_main {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      flex-direction: row;
+      gap: 5rem;
+
+      &_left {
+        display: flex;
+        flex-direction: column;
+        gap: 7rem;
+        align-items: flex-start;
+        width: 50%;
+        height: 100vh;
+        padding-right: 1rem;
+        padding-top: 4rem;
+        box-shadow: inset -20px -8px 68px -70px rgba(214, 201, 214, 1);
+      }
+    }
+    &_leftCont {
+      display: flex;
+      justify-content: center;
+      width: 95%;
+    }
+
+    &_rightCont {
+      width: 50%;
+      gap: 2rem;
+      align-items: start;
     }
   }
 }
