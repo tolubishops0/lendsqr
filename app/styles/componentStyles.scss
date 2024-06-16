@@ -75,11 +75,14 @@
 }
 
 @media (width >= 768px) {
-  .inputfield,
-  .button {
+  .inputfield {
     height: $inputfield-height;
+    p {
+      left: 90%;
+    }
   }
   .button {
-    margin-top: 1rem;
+    height: $inputfield-height;
+    margin-top: 0.5rem;
   }
 }

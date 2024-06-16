@@ -10,11 +10,16 @@
   width: 85%;
   margin: 0 auto;
   font-family: "Avenir Next", sans-serif;
+  @media (width >= 768px) {
+    padding-left: 4rem;
+    padding-right: 10rem;
+  }
 
   &_logocont {
     display: inline-flex;
     height: auto;
     align-items: flex-start;
+    width: 30%;
   }
 
   &_logoimg {
@@ -41,6 +46,19 @@
     align-items: center;
     justify-content: center;
     gap: 4rem;
+    animation: rightFade 2s ease 0s 1 normal forwards;
+
+    @keyframes rightFade {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     &_header {
       color: $primary-header-color;
@@ -108,24 +126,43 @@
       &_left {
         display: flex;
         flex-direction: column;
-        gap: 7rem;
+        gap: 7.5rem;
         align-items: flex-start;
         width: 50%;
         height: 100vh;
         padding-right: 1rem;
         padding-top: 4rem;
         box-shadow: inset -20px -8px 68px -70px rgba(214, 201, 214, 1);
+        animation: leftFade 2s ease 0s 1 normal forwards;
+
+        @keyframes leftFade {
+          0% {
+            opacity: 0;
+            transform: translateY(-50px);
+          }
+
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
       }
     }
     &_leftCont {
       display: flex;
-      justify-content: center;
       width: 95%;
+
+      &_image {
+        width: 100%;
+      }
+    }
+    &_logocont {
+      padding-left: 2rem;
     }
 
     &_rightCont {
       width: 50%;
-      gap: 2rem;
+      gap: 3rem;
       align-items: start;
     }
   }

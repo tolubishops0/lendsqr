@@ -57,7 +57,12 @@ const SignIn = () => {
             <Image className={style.signin_logoimg} src={logoimg} alt="logo" />
           </div>
           <div className={style.signin_leftCont}>
-            <Image src={signinimg} alt="signinimg" layout="responsive" />
+            <Image
+              src={signinimg}
+              className={style.signin_leftCont_image}
+              alt="signinimg"
+              layout="responsive"
+            />
           </div>
         </div>
 
