@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { logoimg, signinimg } from "../../lib/lib";
 import style from "../../styles/auth.module.scss";
-import InputField from "../InputField";
+import InputField from "../../components/InputField";
 import Button from "../Button";
 
 const SignIn = () => {
