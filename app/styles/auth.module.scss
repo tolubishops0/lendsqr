@@ -1,5 +1,6 @@
 @import "fonts.module";
 @import "variables.scss";
+@import "_mixins.scss";
 
 .signin {
   position: relative;
@@ -95,7 +96,6 @@
     top: 10%;
     left: 8%;
     // width: 20%;
-    background-color: aqua;
     animation: leftFadeLogo 2s ease 0s 1 normal forwards;
     @keyframes leftFadeLogo {
       0% {
@@ -113,7 +113,7 @@
     }
   }
 
-  @media (width >= 768px) {
+  @include respond-to(base) {
     &_maincontainer {
       width: 100%;
       display: flex;
