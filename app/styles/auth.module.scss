@@ -94,7 +94,8 @@
     position: fixed;
     top: 10%;
     left: 8%;
-    width: 20%;
+    // width: 20%;
+    background-color: aqua;
     animation: leftFadeLogo 2s ease 0s 1 normal forwards;
     @keyframes leftFadeLogo {
       0% {
