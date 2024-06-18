@@ -1,22 +1,25 @@
-$primary-header-color: #213f7d;
+$page-width: 0 4rem 0 2rem;
+
+$primary-header-color: #213f7d; //primary-blue
 $auth-header-font-size: 2.5rem; //40px
 $auth-header-font-weight: 700;
 $auth-header-line-height: 3.415625rem; //54.64px
 $auth-header-letter-spacing: -0.04em; //-4%
 
-$secondary-header-color: #545f7d;
+$secondary-header-color: #545F7D;
 $secondary-header-font-size: 1.25rem; //20px
 $secondary-header-font-weight: 400;
 $secondary-header-line-height: 1.7075rem; //27.32px
 
-$inputfield-border-color: rgba(84, 95, 125, 0.15);
+$inputfield-border: 2px solid rgba(84, 95, 125, 0.15);
 $inputfield-border-radius: 0.3125rem; //5px
-$inputfield-border-width: 0.125rem; //2px
 
 $inputfield-height: 3.125rem; //50px
 // $inputfield-height-mobile: 2.125rem; //34px
 $inputfield-placeholder-font-size: 0.875rem; //14px
 $inputfield-placeholder-font-size-mobile: 0.675rem; //10.8px
+$inputfield-searchbar-placeholder-font-size-line-height: 1.02625rem; //16.42px
+$inputfield-auth-placeholder-font-size-line-height: 1.195rem; //19.12px
 
 $button-border-radius: 0.5rem; //8px
 $button-box-shadow: 0px 0px 90px 0px #00000008; //0px 15px 90px 0px #00000008;
@@ -24,10 +27,18 @@ $button-box-shadow-hover: 0px 0 30px 0px rgba(0, 0, 0, 0.1);
 
 $font-color-light-Green: #39cdcc;
 $small-font-size: 0.625rem; //10px
+$normal-font-size: 1rem; //16px
+$semi-normal-font-weight: 500;
 $semi-bold-font-weight: 600;
 
 $button-text-letter-spacing: 0.1em; //10%
 
 $small-text-line-height: 1.024375rem; //16.39px
+$normal-text-line-height: 1.173125rem; //18.77px
 
-$red-text: #E4033B;
+$red-text: #e4033b;
+
+$bg-gray-color: #fbfbfb;
+$bg-white-color: #ffff;
+
+// $box-shadow:

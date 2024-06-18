@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "_mixins.scss";
 
 .input-field-cont {
   position: relative;
@@ -9,10 +10,8 @@
 .inputfield {
   width: 100%;
   height: $inputfield-height;
-  border-color: $inputfield-border-color;
+  border: $inputfield-border;
   border-radius: $inputfield-border-radius;
-  border-width: $inputfield-border-width;
-  border-style: solid;
   position: relative;
   display: flex;
   justify-content: center;
@@ -21,7 +20,7 @@
   p {
     position: absolute;
     top: 35%;
-    left: 85%;
+    left: 83%;
     color: $font-color-light-Green;
     font-size: $small-font-size;
     font-weight: $semi-bold-font-weight;
@@ -29,6 +28,28 @@
     letter-spacing: $button-text-letter-spacing;
     text-transform: uppercase;
     cursor: pointer;
+
+    @include respond-to(xsmall) {
+      left: 85%;
+    }
+    @include respond-to(small) {
+      left: 90%;
+    }
+    @include respond-to(medium) {
+      left: 92%;
+    }
+
+    @include respond-to(base) {
+      left: 80%;
+    }
+
+    @include respond-to(large) {
+      left: 85%;
+    }
+
+    @include respond-to(xlarge) {
+      left: 88%;
+    }
   }
 
   input {
@@ -36,19 +57,13 @@
     border: none;
     &:focus {
       outline: none;
-      border-color: darken($inputfield-border-color, 10%);
     }
-  }
-
-  &:focus {
-    outline: none;
-    border-color: darken($inputfield-border-color, 10%);
   }
   &::placeholder {
     color: $secondary-header-color;
     font-size: $inputfield-placeholder-font-size-mobile;
     font-weight: $secondary-header-font-weight;
-    line-height: $secondary-header-line-height;
+    line-height: $inputfield-auth-placeholder-font-size-line-height;
   }
 }
 
@@ -72,25 +87,246 @@
       box-shadow: $button-box-shadow-hover;
     }
   }
-}
-
-@media (min-width: 768px) {
-  .inputfield {
-    height: $inputfield-height;
-    p {
-      left: 80%;
-    }
-  }
-  .button {
+  @include respond-to(base) {
     height: $inputfield-height;
     margin-top: 0.5rem;
   }
 }
-@media (min-width: 1100px) {
-  .inputfield {
-    height: $inputfield-height;
-    p {
-      left: 90%;
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem;
+  background: transparent;
+
+  .search-input {
+    width: 100%;
+    height: 100%;
+    padding-left: 0.9rem;
+    outline: none;
+    height: $auth-header-font-size;
+    border-radius: $button-border-radius 0 0 $button-border-radius;
+    border: $inputfield-border;
+    border-right: 0;
+
+    :focus {
+      outline: 0;
+      border: 1px solid $primary-header-color;
+    }
+
+    &::placeholder {
+      color: $secondary-header-color;
+      font-size: $inputfield-placeholder-font-size;
+      font-weight: $secondary-header-font-weight;
+      line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    }
+  }
+
+  .button-searchbar {
+    width: 3.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $font-color-light-Green;
+    border: 1px solid $font-color-light-Green;
+    border-radius: 0 $button-border-radius $button-border-radius 0;
+    img {
+      width: 0.9rem;
+      height: auto;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+  background-color: $bg-white-color;
+  height: 9.25rem;
+  -webkit-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: center;
+
+  .header-inner {
+    padding: 0;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1.2rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header-logo-container-sm {
+    display: flex;
+    transition: all 0.5s ease;
+  }
+
+  .header-menu-container {
+    width: 2rem;
+  }
+
+  .header-logo-container {
+    z-index: 5;
+    width: 60%;
+  }
+
+  .header-logo-container-lg {
+    display: none;
+  }
+
+  .header-searchbar-lg {
+    display: none;
+  }
+
+  .header-searchbar-sm {
+    display: block;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-user-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    flex: 1;
+
+    a {
+      font-family: "Roboto", sans-serif;
+      font-size: $normal-font-size;
+      color: $primary-header-color;
+      font-weight: $secondary-header-font-weight;
+      line-height: 18.75px;
+    }
+
+    .header-avatar {
+      width: 2rem;
+    }
+    .header-user-name {
+      font-size: $inputfield-placeholder-font-size;
+      color: $primary-header-color;
+      line-height: $normal-text-line-height;
+      font-weight: $semi-normal-font-weight;
+    }
+    .user-icon-avatar {
+      display: flex;
+      align-items: baseline;
+      img {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.sidebar-sm {
+  // background: $bg-white-color;
+  background: red;
+  width: 40%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: green;
+  height: 100vh;
+}
+
+.body {
+  grid-area: body;
+  background: orangered;
+  // background: $bg-gray-color;
+}
+
+@include respond-to(base) {
+  .header {
+    display: flex;
+    justify-content: center;
+    height: 10.25rem;
+
+    .header-logo-container-sm {
+      display: none;
+    }
+
+    .header-logo-container-lg {
+      display: block;
+      flex: 1;
+    }
+    .header-user-container {
+      .header-bell-icon {
+        margin-left: 1rem;
+      }
+      .header-avatar {
+        width: 2.5rem;
+        margin-left: 1.5rem;
+      }
+      .user-icon-avatar {
+        img {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to(large) {
+  .header {
+    height: 8.25rem;
+
+    .header-searchbar-lg {
+      width: 100%;
+      display: flex;
+      flex: 1;
+    }
+
+    .header-searchbar-sm {
+      display: none;
+    }
+  }
+}
+
+@include respond-to(xlarge) {
+  .header {
+    height: 6.25rem;
+    .header-inner {
+      width: 100%;
+      padding: $page-width;
+
+      background-color: yellow;
+    }
+
+    .search-bar {
+      .search-input {
+        width: calc(25rem - 3.5rem);
+      }
+    }
+
+    .header-user-container {
+      .header-user-name {
+        font-size: $normal-font-size;
+      }
+      a {
+        margin-top: 5px;
+      }
+      .header-avatar {
+        width: 3rem;
+        margin-left: 1rem;
+      }
+      .header-bell-icon {
+        margin-left: 1.5rem;
+      }
     }
   }
 }

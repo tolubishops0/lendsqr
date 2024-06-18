@@ -1,165 +1,6 @@
 @import "fonts.module";
 @import "variables.scss";
-
-// .signin {
-//   width: 85%;
-//   margin: 0 auto;
-//   font-family: "Avenir Next", sans-serif;
-//   @media (width >= 768px) {
-//     // padding-left: 4rem;
-//     // padding-right: 10rem;
-//     // width: 100%;
-//   }
-
-//   &_logocont {
-//     width: 30%;
-//   }
-
-//   &_logoimg {
-//     width: 100%;
-//   }
-
-//   &_main {
-//     width: 100%;
-//     &_left {
-//       padding-top: 3rem;
-//     }
-//   }
-
-//   &_leftCont {
-//     width: 100%;
-//     display: none;
-//   }
-
-//   &_rightCont {
-//     width: 100%;
-//     height: 80vh;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 4rem;
-//     animation: rightFade 2s ease 0s 1 normal forwards;
-
-//     @keyframes rightFade {
-//       0% {
-//         opacity: 0;
-//         transform: translateY(50px);
-//       }
-
-//       100% {
-//         opacity: 1;
-//         transform: translateY(0);
-//       }
-//     }
-
-// &_header {
-//   color: $primary-header-color;
-//   font-size: $auth-header-font-size;
-//   font-weight: $auth-header-font-weight;
-//   line-height: $auth-header-line-height;
-//   letter-spacing: $auth-header-letter-spacing;
-// }
-
-// &_text {
-//   color: $secondary-header-color;
-//   font-size: $secondary-header-font-size;
-//   font-weight: $secondary-header-font-weight;
-//   line-height: $secondary-header-line-height;
-//   margin-top: 0.5rem;
-// }
-
-//     &_inputCont {
-//       width: 100%;
-//       display: flex;
-//       justify-content: center;
-//       flex-direction: column;
-//       gap: 1.2rem;
-
-//       &_input {
-//         width: 100%;
-//         height: $inputfield-height;
-//         border-color: $inputfield-border-color;
-//         border-radius: $inputfield-border-radius;
-//         border-width: $inputfield-border-width;
-//         border-style: solid;
-//         padding-left: 1rem;
-
-//         &:focus {
-//           outline: none;
-//           border-color: darken($inputfield-border-color, 10%);
-//         }
-//         &::placeholder {
-//           color: $secondary-header-color;
-//           font-size: $inputfield-placeholder-font-size-mobile;
-//           font-weight: $secondary-header-font-weight;
-//           line-height: $secondary-header-line-height;
-//         }
-//       }
-//       &_forgotPassword {
-//         color: $font-color-light-Green;
-//         font-size: $small-font-size;
-//         font-weight: $semi-bold-font-weight;
-//         line-height: $small-text-line-height;
-//         letter-spacing: $button-text-letter-spacing;
-//         text-transform: uppercase;
-//         cursor: pointer;
-//       }
-//     }
-//   }
-
-//   @media (width >= 769px) {
-//     &_main {
-//       display: flex;
-//       align-items: center;
-//       flex-direction: row;
-//       gap: 5rem;
-
-//       &_left {
-//         display: flex;
-//         flex-direction: column;
-//         gap: 7.5rem;
-//         align-items: flex-start;
-//         height: 100vh;
-//         padding-right: 3rem;
-//         padding-top: 4rem;
-//         box-shadow: inset -20px -8px 68px -70px rgba(214, 201, 214, 1);
-//         animation: leftFade 2s ease 0s 1 normal forwards;
-
-//         @keyframes leftFade {
-//           0% {
-//             opacity: 0;
-//             transform: translateY(-50px);
-//           }
-
-//           100% {
-//             opacity: 1;
-//             transform: translateY(0);
-//           }
-//         }
-//       }
-//     }
-//     &_leftCont {
-//       display: block;
-//       // padding-right: 1rem;
-//       &_image {
-//         width: 100%;
-//       }
-//     }
-//     &_logocont {
-//       padding-left: 2rem;
-//       width: fit-content;
-//     }
-
-//     &_rightCont {
-//       // background-color: orange;
-//       // padding-right: 3rem;
-//       width: 50%;
-//       gap: 3rem;
-//       align-items: start;
-//     }
-//   }
-// }
+@import "_mixins.scss";
 
 .signin {
   position: relative;
@@ -254,7 +95,7 @@
     position: fixed;
     top: 10%;
     left: 8%;
-    width: 20%;
+    // width: 20%;
     animation: leftFadeLogo 2s ease 0s 1 normal forwards;
     @keyframes leftFadeLogo {
       0% {
@@ -272,7 +113,7 @@
     }
   }
 
-  @media (width >= 768px) {
+  @include respond-to(base) {
     &_maincontainer {
       width: 100%;
       display: flex;
