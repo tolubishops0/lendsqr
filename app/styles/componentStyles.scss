@@ -142,12 +142,12 @@
 .header {
   grid-area: header;
   background-color: $bg-white-color;
-  height: 9.25rem;
-  -webkit-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
-  -moz-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
-  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.4) !important;
+  -moz-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: $header-box-shadow;
   display: flex;
   justify-content: center;
+  z-index: 10;
 
   .header-inner {
     padding: 0;
@@ -226,35 +226,25 @@
 }
 
 .sidebar-sm {
-  // background: $bg-white-color;
-  background: red;
+  background: $bg-white-color;
   width: 40%;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-
-
-}
-
-.sidebar {
-  grid-area: sidebar;
-  background-color: green;
-  height: 100vh;
 }
 
 .body {
   grid-area: body;
-  background: orangered;
-  // background: $bg-gray-color;
+  background: $bg-gray-color;
 }
 
 @include respond-to(base) {
   .header {
     display: flex;
     justify-content: center;
-    height: 10.25rem;
+    height: 100%;
 
     .header-logo-container-sm {
       display: none;
@@ -283,8 +273,7 @@
 
 @include respond-to(large) {
   .header {
-    height: 8.25rem;
-
+    // height: 8.25rem;
     .header-searchbar-lg {
       width: 100%;
       display: flex;
@@ -295,16 +284,19 @@
       display: none;
     }
   }
+  .sidebar {
+    grid-area: sidebar;
+    background-color: $bg-white-color;
+    height: 100vh;
+  }
 }
 
 @include respond-to(xlarge) {
   .header {
-    height: 6.25rem;
+    // height: 6.25rem;
     .header-inner {
       width: 100%;
       padding: $page-width;
-
-      background-color: yellow;
     }
 
     .search-bar {

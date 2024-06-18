@@ -5,12 +5,12 @@ import Image from "next/image";
 import { logoimg, avatararricn, avataricn, bell, menu } from "@/app/lib/lib";
 import "../../styles/componentStyles.scss";
 import SearchBar from "../SearchBar";
-import SideBar from "../Sidebar/SideBar";
 import { SideBarProps } from "@/app/types/type";
 
 const Header = ({ handleToggleSidebar, toggleSideBar }: SideBarProps) => {
   return (
-    <header className="header">
+    <header
+      className="header">
       <div className="header-inner">
         <div className="header-container">
           <div

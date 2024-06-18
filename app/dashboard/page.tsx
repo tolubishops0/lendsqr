@@ -8,7 +8,7 @@ import "../styles/globals.scss";
 
 const Dashboard = () => {
   const [toggleSideBar, setTogleSideBar] = useState<boolean>(false);
-  const [viewportWidth, setViewportWidth] = useState<number>(0);
+  const [viewportWidth, setViewportWidth] = useState<number>(10);
 
   const handleToggleSidebar = (): void => {
     setTogleSideBar(!toggleSideBar);
