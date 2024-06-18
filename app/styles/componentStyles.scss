@@ -142,12 +142,12 @@
 .header {
   grid-area: header;
   background-color: $bg-white-color;
-  height: 9.25rem;
   -webkit-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
   -moz-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
   box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
   display: flex;
   justify-content: center;
+  z-index: 10;
 
   .header-inner {
     padding: 0;
@@ -225,45 +225,90 @@
   }
 }
 
-.sidebar-sm {
-  // background: $bg-white-color;
-  background: red;
-  width: 40%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-
-
-}
-
 .sidebar {
-  grid-area: sidebar;
-  background-color: green;
-  height: 100vh;
+  .sidebar-sm {
+    background: $bg-white-color;
+    width: 60%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .sidebar-container {
+    position: absolute;
+    top: 18%;
+    width: 100%;
+  }
+}
+.sidebar-list-container {
+  .sidebar-headers {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .sidebar-header-small {
+    margin-top: 0.8rem;
+    padding-left: 1.5rem;
+  }
+  .sidebar-header-main {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      color: $primary-header-color;
+      font-weight: $secondary-header-font-weight;
+      font-size: $small-font-size;
+      line-height: $normal-text-line-height;
+    }
+  }
+  .dashboard-container {
+    span {
+      color: rgba($primary-header-color, 0.6);
+    }
+  }
+  .active-nav {
+    background-color: rgba(57, 205, 204, 0.06);
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-left: 1.5rem;
+    }
+  }
 }
 
 .body {
   grid-area: body;
-  background: orangered;
-  // background: $bg-gray-color;
+  background: $bg-gray-color;
+  height: 100%;
 }
 
 @include respond-to(base) {
   .header {
     display: flex;
     justify-content: center;
-    height: 10.25rem;
+    height: 100%;
 
-    .header-logo-container-sm {
-      display: none;
-    }
-
-    .header-logo-container-lg {
-      display: block;
-      flex: 1;
-    }
     .header-user-container {
       .header-bell-icon {
         margin-left: 1rem;
@@ -279,32 +324,74 @@
       }
     }
   }
+  .sidebar {
+    .sidebar-sm {
+      background: $bg-white-color;
+      width: 40%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .sidebar-container {
+      position: absolute;
+      top: 16%;
+    }
+  }
 }
 
 @include respond-to(large) {
   .header {
-    height: 8.25rem;
-
     .header-searchbar-lg {
       width: 100%;
       display: flex;
       flex: 1;
     }
-
     .header-searchbar-sm {
       display: none;
+    }
+    .header-logo-container-sm {
+      display: none;
+    }
+    .header-logo-container-lg {
+      display: block;
+      flex: 1;
+    }
+  }
+  .sidebar-sm {
+    display: none;
+  }
+  .sidebar-container-lg {
+    margin-top: 2rem;
+  }
+  .sidebar-list-container {
+    .sidebar-headers {
+      gap: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar-header-small {
+      margin: 2rem 0 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+    .sidebar-header-main {
+      font-size: $small-font-size;
+    }
+    .list-title {
+      margin-top: 1rem;
+    }
+    ul {
+      gap: 0.7rem;
     }
   }
 }
 
 @include respond-to(xlarge) {
   .header {
-    height: 6.25rem;
+    // height: 6.25rem;
     .header-inner {
       width: 100%;
       padding: $page-width;
-
-      background-color: yellow;
     }
 
     .search-bar {

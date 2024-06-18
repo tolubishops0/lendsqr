@@ -1,14 +1,16 @@
 "use client";
 import React, { useRef } from "react";
-import { SideBarProps } from "@/app/types/type";
+import { SideBarToggleProps } from "@/app/types/type";
 import { useClickAway } from "react-use";
 import { AnimatePresence, motion } from "framer-motion";
+import SideBarList from "./SideBarList";
 
 const SideBar = ({
   viewportWidth,
   toggleSideBar,
   handleToggleSidebar,
-}: SideBarProps) => {
+}: SideBarToggleProps) => {
+  
   const refClickAway = useRef<HTMLDivElement>(null);
   useClickAway(refClickAway, () => {
     if (toggleSideBar) {
@@ -25,13 +27,19 @@ const SideBar = ({
           <AnimatePresence mode="wait" initial={false}>
             {toggleSideBar && (
               <motion.div {...framerSidebarPanel} className="sidebar-sm">
-                {/* SideBar */}
+                <div className="sidebar-container">
+                  <SideBarList />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       ) : (
-        <div className=""></div>
+        <div className="sidebar-lg">
+          <div className="sidebar-container-lg">
+            <SideBarList />
+          </div>
+        </div>
       )}
     </aside>
   );

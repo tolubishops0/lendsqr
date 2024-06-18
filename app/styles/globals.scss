@@ -2,6 +2,8 @@
 
 @import "_mixins.scss";
 @import "variables.scss";
+// @import "componentStyles.scss";
+
 
 * {
   box-sizing: border-box;
@@ -17,24 +19,34 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
-.grid-container {
+.grid_container {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.2fr 3fr;
+  grid-template-rows: 8.25rem 3fr;
   grid-template-areas: "header" "body";
 }
 
 @include respond-to(large) {
   .grid_container {
-    // width: $page-width;
     display: grid;
-    // flex-direction: column;
     height: 100vh;
-    grid-template-columns: 400px 1fr 1fr 1fr;
-    grid-template-rows: 0.7fr auto 3fr;
+    grid-template-columns: 17.6875rem 1fr 1fr 1fr;
+    grid-template-rows: 8.25rem auto 3fr;
     grid-template-areas:
       "header header header header"
       "sidebar body body body";
   }
 }
+@include respond-to(xlarge) {
+  .grid_container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 17.6875rem 1fr 1fr 1fr;
+    grid-template-rows: 6.25rem auto 3fr;
+    grid-template-areas:
+      "header header header header"
+      "sidebar body body body"
+  }
+}
+

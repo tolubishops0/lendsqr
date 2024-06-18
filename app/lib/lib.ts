@@ -1,10 +1,12 @@
+import { SiderBarListProps } from "../types/type";
+
 import logo from "../../public/assets/logoimg.svg";
 import signin from "../../public/assets/signinimg.svg";
 
 import org from "../../public/assets/switcorgicon.svg";
 import arrdown from "../../public/assets/arrdown.svg";
 
-import dashbrdicn from "../../public/assets/dashbrdicn.svg";
+import dashbrd from "../../public/assets/dashbrdicn.svg";
 
 //NAVBAR
 import searchicn from "../../public/assets/serachicn.svg";
@@ -48,3 +50,98 @@ export const avatararricn = avdownarricn;
 export const searchicon = searchicn;
 export const bell = bellicn;
 export const menu = menuicn;
+
+// SIDEBAR
+
+export const sworgicn = org;
+export const arrdownicn = arrdown;
+export const dashbrdicn = dashbrd;
+
+export const cutomersFeature: SiderBarListProps[] = [
+  {
+    label: "Users",
+    icon: usericn,
+  },
+  {
+    label: "Guarantors",
+    icon: gurricn,
+  },
+  {
+    label: "Loans",
+    icon: loanicn,
+  },
+  {
+    label: "Decision Models",
+    icon: decicn,
+  },
+  {
+    label: "Savings",
+    icon: savingsicn,
+  },
+  {
+    label: "Loan Requests",
+    icon: loanreqicn,
+  },
+  {
+    label: "Whitelist",
+    icon: whitelisticn,
+  },
+  {
+    label: "Karma",
+    icon: karmaicn,
+  },
+];
+
+export const businessFeatures: SiderBarListProps[] = [
+  {
+    label: "Organization",
+    icon: orgicn,
+  },
+  {
+    label: "Loan Products",
+    icon: loanprdicn,
+  },
+  {
+    label: "Savings Products",
+    icon: savprdicn,
+  },
+  {
+    label: "Fees and Charges",
+    icon: feesicn,
+  },
+  {
+    label: "Transactions",
+    icon: transicn,
+  },
+  {
+    label: "Services",
+    icon: servicsicn,
+  },
+  {
+    label: "Service Account",
+    icon: serviceaccicn,
+  },
+  {
+    label: "Settlements",
+    icon: settlementsicn,
+  },
+  {
+    label: "Reports",
+    icon: reportsicn,
+  },
+];
+
+export const settings: SiderBarListProps[] = [
+  {
+    label: "Preferences",
+    icon: preficn,
+  },
+  {
+    label: "Fees and Pricing",
+    icon: feesandpricingicn,
+  },
+  {
+    label: "Audit Logs",
+    icon: auditlogsicn,
+  },
+];
