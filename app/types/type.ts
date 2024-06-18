@@ -11,3 +11,9 @@ export interface ButtonProps {
   className: string;
   onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface SideBarProps {
+  toggleSideBar: boolean;
+  viewportWidth?: number;
+  handleToggleSidebar: () => void;
+}

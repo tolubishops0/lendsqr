@@ -10,7 +10,7 @@ const SearchBar = () => {
         className="search-input"
         placeholder="Search for anything"
       />
-      <button className="button-sidebar" aria-label="Search button">
+      <button className="button-searchbar" aria-label="Search button">
         <Image src={searchicon} alt="search-button" />
       </button>
     </form>
