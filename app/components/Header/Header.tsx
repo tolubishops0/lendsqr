@@ -5,23 +5,22 @@ import Image from "next/image";
 import { logoimg, avatararricn, avataricn, bell, menu } from "@/app/lib/lib";
 import "../../styles/componentStyles.scss";
 import SearchBar from "../SearchBar";
-import { SideBarProps } from "@/app/types/type";
+import { SideBarToggleProps } from "@/app/types/type";
 
-const Header = ({ handleToggleSidebar, toggleSideBar }: SideBarProps) => {
+const Header = ({ handleToggleSidebar, toggleSideBar }: SideBarToggleProps) => {
   return (
-    <header
-      className="header">
+    <header className="header">
       <div className="header-inner">
         <div className="header-container">
-          <div
-            className="header-logo-container-sm  "
-            onClick={handleToggleSidebar}>
+          <div className="header-logo-container-sm  ">
             {toggleSideBar ? (
               <div className="header-logo-container">
                 <Image layout="responsive" src={logoimg} alt="logo" />
               </div>
             ) : (
-              <div className="header-menu-container">
+              <div
+                className="header-menu-container"
+                onClick={handleToggleSidebar}>
                 <Image layout="responsive" src={menu} alt="logo" />
               </div>
             )}

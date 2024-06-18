@@ -1,3 +1,5 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+
 export interface InputFieldProps {
   type?: string;
   placeholder?: string;
@@ -12,8 +14,14 @@ export interface ButtonProps {
   onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface SideBarProps {
+export interface SideBarToggleProps {
   toggleSideBar: boolean;
   viewportWidth?: number;
   handleToggleSidebar: () => void;
+}
+
+export interface SiderBarListProps {
+  label: string;
+  icon: StaticImport;
+  icon2?: StaticImport;
 }

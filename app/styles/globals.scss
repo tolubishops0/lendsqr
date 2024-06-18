@@ -27,16 +27,6 @@ body {
   grid-template-areas: "header" "body";
 }
 
-@include respond-to(base) {
-  .grid_container {
-    display: grid;
-    grid-template-columns: 17.6875rem 1fr 1fr 1fr;
-    grid-template-rows: 10.25rem auto 3fr;
-    grid-template-areas:
-      "header header header header"
-      "sidebar body body body";
-  }
-}
 @include respond-to(large) {
   .grid_container {
     display: grid;
@@ -56,12 +46,7 @@ body {
     grid-template-rows: 6.25rem auto 3fr;
     grid-template-areas:
       "header header header header"
-      "sidebar body body body";
+      "sidebar body body body"
   }
 }
 
-.header {
-  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.4) !important;
-    background-color: blue;
-
-}
