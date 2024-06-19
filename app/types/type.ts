@@ -25,3 +25,45 @@ export interface SiderBarListProps {
   icon: StaticImport;
   icon2?: StaticImport;
 }
+export interface UserCardListProps {
+  label: string;
+  icon: StaticImport;
+  value: string;
+}
+
+export interface DataListTable {
+  company: string;
+  firstName: string;
+  phoneNumber: string;
+  email: string;
+  dateJoined: string;
+  status: string;
+}
+
+export interface DataDetails {
+  firstName: string;
+  email: string;
+  dateJoined: string;
+  status: string;
+  id: number;
+  accNumber: number;
+  balance: string;
+  bank: string;
+  children: number;
+  company: string;
+  dataJoined: string;
+  educationLevel: string;
+  guarantorEmail: string;
+  guarantorName: string;
+  guarantorNumber: string;
+  guarantorRel: string;
+
+  lastName: string;
+  loanRepayment: string;
+  maritalStatus: string;
+  monthlyIncome: string;
+  phoneNumber: string;
+  residence: string;
+  userId: string;
+  userTeir: string;
+}

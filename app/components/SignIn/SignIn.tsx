@@ -51,7 +51,7 @@ const SignIn = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://run.mocky.io/v3/c0c2d6b9-b86c-4436-a855-dc9bac35376c"
+        "https://run.mocky.io/v3/4a123945-db55-4c3f-8a6e-50e7623a4fa0"
       );
       const data = await response?.json();
       localStorage.setItem("dashboardData", JSON.stringify(data));

@@ -228,18 +228,22 @@
 .sidebar {
   .sidebar-sm {
     background: $bg-white-color;
-    width: 60%;
+    width: 55%;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
+    padding-top: 10rem;
   }
 
   .sidebar-container {
-    position: absolute;
-    top: 18%;
+    position: fixed;
+    top: 22%;
     width: 100%;
+  }
+  .sidebar-lg {
+    display: none;
   }
 }
 .sidebar-list-container {
@@ -249,9 +253,19 @@
     gap: 1.5rem;
     padding-left: 1.5rem;
   }
-  .sidebar-header-small {
-    margin-top: 0.8rem;
+  .list-title {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0 0.6rem 0;
     padding-left: 1.5rem;
+    span {
+      color: $primary-header-color;
+      font-weight: $secondary-header-font-weight;
+      font-size: $inputfield-placeholder-font-size;
+      line-height: $normal-text-line-height;
+    }
   }
   .sidebar-header-main {
     display: flex;
@@ -261,7 +275,7 @@
     span {
       color: $primary-header-color;
       font-weight: $secondary-header-font-weight;
-      font-size: $small-font-size;
+      font-size: $inputfield-placeholder-font-size;
       line-height: $normal-text-line-height;
     }
   }
@@ -272,6 +286,13 @@
   }
   .active-nav {
     background-color: rgba(57, 205, 204, 0.06);
+  }
+  .sidebar-sublist-sm {
+    transition: all 0.5s ease-in;
+  }
+
+  .sidebar-sublist-lg {
+    display: none;
   }
 
   ul {
@@ -284,6 +305,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      margin: 0.3rem 0;
       height: 2.5rem;
       cursor: pointer;
       transition: all 0.3s ease-out;
@@ -295,12 +317,118 @@
       padding-left: 1.5rem;
     }
   }
+  .active-bar {
+    background-color: $font-color-light-Green;
+    height: 2.5rem;
+    width: 2px;
+    position: absolute;
+    left: 0;
+  }
 }
 
+// MAIN-DASHOARD
 .body {
   grid-area: body;
   background: $bg-gray-color;
   height: 100%;
+  width: 100%;
+  // padding: 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  .body-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .page-title {
+    h3 {
+      font-size: $regular-font-size;
+      font-weight: $semi-normal-font-weight;
+      line-height: $regular-line-height;
+      color: $primary-header-color;
+    }
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 10px;
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    height: 8rem;
+    // width: 15rem;
+    width: calc(50% - 1rem);
+    background-color: $bg-white-color;
+    border: 1px solid #213f7d0f;
+    box-shadow: $card-box-shadow;
+    border-radius: $card-border-radius;
+    padding-left: 1.5rem;
+    .role {
+      font-size: $inputfield-placeholder-font-size;
+      font-weight: $semi-normal-font-weight;
+      line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+      color: $secondary-header-color;
+    }
+    .qtity {
+      font-size: $regular-font-size;
+      font-weight: $semi-bold-font-weight;
+      line-height: $regular-line-height;
+      color: $primary-header-color;
+    }
+  }
+}
+
+.table-data {
+  background-color: $bg-white-color;
+  border: 1px solid #213f7d0f;
+  box-shadow: $card-box-shadow;
+  border-radius: $card-border-radius;
+  height: fit-content;
+  padding: 1.5rem 1.5rem .5rem 1.5rem;
+  table {
+    width: 100%;
+  }
+  .table-head {
+    .table-header-content {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: $semi-bold-font-weight;
+      font-size: $semi-small-font-size;
+      line-height: $semi-small-line-height;
+      color: $secondary-header-color;
+    }
+
+    img {
+      width: 10px;
+    }
+  }
+  .table-data-row td {
+    border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+    height: 3.8rem;
+  }
+  .table-data-row.last-row td {
+    border-bottom: none;
+  }
+
+  .table-data-row {
+    font-weight: $secondary-header-font-weight;
+    font-size: $inputfield-placeholder-font-size;
+    line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    color: $secondary-header-color;
+  }
 }
 
 @include respond-to(base) {
@@ -346,7 +474,7 @@
     .header-searchbar-lg {
       width: 100%;
       display: flex;
-      flex: 1;
+      flex: 2;
     }
     .header-searchbar-sm {
       display: none;
@@ -359,8 +487,13 @@
       flex: 1;
     }
   }
-  .sidebar-sm {
-    display: none;
+  .sidebar {
+    .sidebar-sm {
+      display: none;
+    }
+    .sidebar-lg {
+      display: block;
+    }
   }
   .sidebar-container-lg {
     margin-top: 2rem;
@@ -368,20 +501,52 @@
   .sidebar-list-container {
     .sidebar-headers {
       gap: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .sidebar-header-small {
-      margin: 2rem 0 0.5rem 0;
-      padding-left: 1.5rem;
-    }
-    .sidebar-header-main {
-      font-size: $small-font-size;
+      margin-bottom: 2rem;
     }
     .list-title {
-      margin-top: 1rem;
+      margin: 1.5rem 0 0.5rem 0;
+      padding-left: 1.5rem;
+      font-weight: $semi-normal-font-weight;
+      font-size: $semi-small-font-size;
+      line-height: $semi-small-line-height;
     }
+    .sidebar-header-main {
+      span {
+        color: $primary-header-color;
+        font-weight: $secondary-header-font-weight;
+        font-size: $normal-font-size;
+        line-height: $normal-text-line-height;
+      }
+    }
+    .dashboard-container {
+      span {
+        color: rgba($primary-header-color, 0.6);
+      }
+    }
+
     ul {
       gap: 0.7rem;
+    }
+    .sidebar-sublist-lg {
+      display: block;
+    }
+    .sidebar-sublist-sm {
+      display: none;
+    }
+    .arr-icn {
+      display: none;
+    }
+  }
+  .card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card-item {
+      margin: 0;
+      height: 10rem;
+      width: calc(25% - 1rem);
     }
   }
 }
