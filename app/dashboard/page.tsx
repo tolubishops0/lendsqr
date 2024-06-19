@@ -7,24 +7,12 @@ import Users from "../components/User/User";
 import "../styles/globals.scss";
 
 const Dashboard = () => {
-  const [toggleSideBar, setTogleSideBar] = useState<boolean>(true);
-  const [viewportWidth, setViewportWidth] = useState<number>(10);
-
+  const [toggleSideBar, setTogleSideBar] = useState<boolean>(false);
   const handleToggleSidebar = (): void => {
     setTogleSideBar(!toggleSideBar);
   };
 
-  const handleResize = () => {
-    setViewportWidth(window?.innerWidth);
-  };
-
-  useEffect(() => {
-    window?.addEventListener("resize", handleResize);
-
-    return () => {
-      window?.removeEventListener("resize", handleResize);
-    };
-  }, []);
+ 
 
   return (
     <div className="grid_container">
@@ -33,7 +21,6 @@ const Dashboard = () => {
         handleToggleSidebar={handleToggleSidebar}
       />
       <SideBar
-        viewportWidth={viewportWidth}
         toggleSideBar={toggleSideBar}
         handleToggleSidebar={handleToggleSidebar}
       />

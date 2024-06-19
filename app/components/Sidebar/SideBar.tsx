@@ -6,41 +6,31 @@ import { AnimatePresence, motion } from "framer-motion";
 import SideBarList from "./SideBarList";
 
 const SideBar = ({
-  viewportWidth,
   toggleSideBar,
   handleToggleSidebar,
 }: SideBarToggleProps) => {
-  
   const refClickAway = useRef<HTMLDivElement>(null);
   useClickAway(refClickAway, () => {
     if (toggleSideBar) {
       handleToggleSidebar();
     }
   });
-
-  console.log(viewportWidth);
-
   return (
     <aside className="sidebar">
-      {viewportWidth && viewportWidth <= 900 ? (
-        <div className="" ref={refClickAway}>
-          <AnimatePresence mode="wait" initial={false}>
-            {toggleSideBar && (
-              <motion.div {...framerSidebarPanel} className="sidebar-sm">
-                <div className="sidebar-container">
-                  <SideBarList />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      <div className="" ref={refClickAway}>
+        <AnimatePresence mode="wait" initial={false}>
+          {toggleSideBar && (
+            <motion.div {...framerSidebarPanel} className="sidebar-sm">
+              <SideBarList />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      <div className="sidebar-lg">
+        <div className="sidebar-container-lg">
+          <SideBarList />
         </div>
-      ) : (
-        <div className="sidebar-lg">
-          <div className="sidebar-container-lg">
-            <SideBarList />
-          </div>
-        </div>
-      )}
+      </div>
     </aside>
   );
 };

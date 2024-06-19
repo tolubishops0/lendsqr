@@ -7,13 +7,27 @@ import {
   arrdownicn,
   dashbrdicn,
   cutomersFeature,
-    businessFeatures,
-  settings
+  businessFeatures,
+  settings,
 } from "@/app/lib/lib";
 import "../../styles/componentStyles.scss";
 
 const SideBarList = () => {
   const [activeNav, setActiveNav] = useState<string>("Users");
+  const [toggleCustomerSubList, setToggleCustomerSubList] =
+    useState<boolean>(false);
+  const [toggleBusinessSubList, setTogleBusinessSubList] =
+    useState<boolean>(false);
+  const handleCustomerSubListToggle = () => {
+    setToggleCustomerSubList(!toggleCustomerSubList);
+  };
+  const handleBusinessSubListToggle = () => {
+    setTogleBusinessSubList(!toggleBusinessSubList);
+  };
+
+  const ActiveBar = () => {
+    return <div className="active-bar"></div>;
+  };
 
   return (
     <div className="sidebar-list-container">
@@ -23,17 +37,41 @@ const SideBarList = () => {
           <span>Switch Organization</span>
           <Image src={arrdownicn} alt="switch-org-icon" />
         </div>
-        <div className="sidebar-header-main dashboard-container">
+        <div className="sidebar-header-main dashboard-container ">
           <Image src={dashbrdicn} alt="Dashboard-icon" />
           <span>Dashboard</span>
         </div>
       </div>
-      <div className="sidebar-header-small">
-        <div className="sidebar-header-main list-title">
-          <span>CUSTOMER</span>
-        </div>
+      <div
+        onClick={handleCustomerSubListToggle}
+        className="list-title">
+        <span>CUSTOMER</span>
+        <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
-      <ul>
+      {toggleCustomerSubList && (
+        <div className="sidebar-sublist-sm ">
+          <ul className="">
+            {cutomersFeature.map((item, index) => (
+              <li
+                onClick={() => setActiveNav(item.label)}
+                key={index}
+                className={`sidebar-header-main  ${
+                  activeNav === item.label
+                    ? "active-nav"
+                    : "dashboard-container "
+                } `}>
+                <div className="list-item">
+                  <Image src={item.icon} alt="Dashboard-icon" />
+                  <span>{item.label}</span>
+                </div>
+                {activeNav === item.label && <ActiveBar />}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <ul className="sidebar-sublist-lg">
         {cutomersFeature.map((item, index) => (
           <li
             onClick={() => setActiveNav(item.label)}
@@ -45,15 +83,39 @@ const SideBarList = () => {
               <Image src={item.icon} alt="Dashboard-icon" />
               <span>{item.label}</span>
             </div>
+            {activeNav === item.label && <ActiveBar />}
           </li>
         ))}
       </ul>
-      <div className="sidebar-header-small">
-        <div className="sidebar-header-main list-title">
-          <span>BUSINESSES</span>
-        </div>
+      <div onClick={handleBusinessSubListToggle} className=" list-title">
+        <span>BUSINESSES</span>
+        <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
-      <ul>
+
+      {toggleBusinessSubList && (
+        <div className="sidebar-sublist-sm">
+          <ul className="">
+            {businessFeatures.map((item, index) => (
+              <li
+                onClick={() => setActiveNav(item.label)}
+                key={index}
+                className={`sidebar-header-main  ${
+                  activeNav === item.label
+                    ? "active-nav"
+                    : "dashboard-container "
+                } `}>
+                <div className="list-item">
+                  <Image src={item.icon} alt="Dashboard-icon" />
+                  <span>{item.label}</span>
+                </div>
+                {activeNav === item.label && <ActiveBar />}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <ul className="sidebar-sublist-lg">
         {businessFeatures.map((item, index) => (
           <li
             onClick={() => setActiveNav(item.label)}
@@ -65,14 +127,13 @@ const SideBarList = () => {
               <Image src={item.icon} alt="Dashboard-icon" />
               <span>{item.label}</span>
             </div>
+            {activeNav === item.label && <ActiveBar />}
           </li>
         ))}
       </ul>
 
-      <div className="sidebar-header-small">
-        <div className="sidebar-header-main list-title">
-          <span>SETTINGS</span>
-        </div>
+      <div className=" list-title">
+        <span>SETTINGS</span>
       </div>
       <ul>
         {settings.map((item, index) => (
@@ -86,6 +147,7 @@ const SideBarList = () => {
               <Image src={item.icon} alt="Dashboard-icon" />
               <span>{item.label}</span>
             </div>
+            {activeNav === item.label && <ActiveBar />}
           </li>
         ))}
       </ul>
