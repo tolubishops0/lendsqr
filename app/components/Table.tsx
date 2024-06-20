@@ -1,11 +1,11 @@
 "use client";
 
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { dashboardTableData, filter, more } from "../lib/lib";
 import { DataDetails } from "../types/type";
 import { parseISO, format } from "date-fns";
-
+import { rightarricn, leftarricn } from "../lib/lib";
 interface DataProps {
   dataList: DataDetails[];
 }
@@ -15,24 +15,27 @@ const Table = ({ dataList }: DataProps) => {
     return format(parsedDate, "MMM dd, yyyy hh:mm a");
   };
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [dataCount, setDataCount] = useState<number>(10);
+  console.log(dataCount);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(dataList?.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentPageData = dataList.slice(startIndex, startIndex + itemsPerPage);
 
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    setDataCount(itemsPerPage - 10);
   };
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setDataCount(itemsPerPage + 10);
   };
 
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentPageData = dataList.slice(startIndex, startIndex + itemsPerPage);
 
   const handleStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -113,44 +116,73 @@ const Table = ({ dataList }: DataProps) => {
   };
 
   return (
-    <div className="table-data">
-      <table>
-        <thead>
-          <tr>
-            {dashboardTableData.map((item, index) => (
-              <th key={index} className="table-head">
-                <span className="table-header-content">
-                  <p>{item}</p>
-                  <Image
-                    src={filter}
-                    alt="filter-icon"
-                    className="filter-icon"
-                  />
-                </span>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {currentPageData?.map((item, index) => (
-            <tr
-              key={item.id}
-              className={`table-data-row ${
-                index === currentPageData.length - 1 ? "last-row" : ""
-              }`}>
-              <td>{item.company}</td>
-              <td>{item.firstName}</td>
-              <td>{item.firstName}@gmail.com</td>
-              <td>0{item.phoneNumber}</td>
-              <td>{DateFormatter(item.dateJoined)}</td>
-              <td>{handleStatusColor(item.status)}</td>
-              <td>
-                <Image src={more} alt="more-icon" />
-              </td>
+    <div className="table-section">
+      <div className="table-data">
+        <table className="table">
+          <thead>
+            <tr>
+              {dashboardTableData.map((item, index) => (
+                <th key={index} className="table-head">
+                  <span className="table-header-content">
+                    <p>{item}</p>
+                    <Image
+                      src={filter}
+                      alt="filter-icon"
+                      className="filter-icon"
+                    />
+                  </span>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentPageData?.map((item, index) => (
+              <tr
+                key={item.id}
+                className={`table-data-row ${
+                  index === currentPageData.length - 1 ? "last-row" : ""
+                }`}>
+                <td>{item.company}</td>
+                <td>{item.firstName}</td>
+                <td>{item.firstName}@gmail.com</td>
+                <td>0{item.phoneNumber}</td>
+                <td>{DateFormatter(item.dateJoined)}</td>
+                <td>{handleStatusColor(item.status)}</td>
+                <td>
+                  <Image src={more} alt="more-icon" />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="pagination-controls">
+        <button
+          className="navigate"
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}>
+          <Image src={leftarricn} alt="filter-icon" className="arr-icon" />
+        </button>
+        {[...Array(0, 2, 3, 15, 16)].map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handlePageClick(index + 1)}
+            disabled={currentPage === index + 1}
+            className={currentPage === index ? "active-page" : "inactive-page"}>
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className="navigate">
+          <Image src={rightarricn} alt="filter-icon" className="arr-icon" />
+        </button>
+      </div>
+
+      <div>
+        show {Math.abs(dataCount)} of {dataList?.length}
+      </div>
     </div>
   );
 };

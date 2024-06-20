@@ -4,8 +4,8 @@ import { userCard } from "../lib/lib";
 
 const Card = () => {
   return (
-    <div>
-      <div className="card-container">
+    // <div className="card-container">
+      <div className="card-section">
         {userCard.map((item, index) => (
           <div key={index} className="card-item">
             <Image alt="card-icon" src={item.icon} />
@@ -13,9 +13,8 @@ const Card = () => {
             <p className="qtity">{item.value}</p>
           </div>
         ))}
-      
       </div>
-    </div>
+    // </div>
   );
 };
 

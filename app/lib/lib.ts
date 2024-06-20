@@ -6,6 +6,8 @@ import signin from "../../public/assets/signinimg.svg";
 import org from "../../public/assets/switcorgicon.svg";
 import arrdown from "../../public/assets/arrdown.svg";
 import moreicn from "../../public/assets/moreicn.svg";
+import rightarr from "../../public/assets/rightarricn.svg";
+import leftarr from "../../public/assets/leftarricn.svg";
 
 import dashbrd from "../../public/assets/dashbrdicn.svg";
 
@@ -68,6 +70,8 @@ export const more = moreicn;
 export const sworgicn = org;
 export const arrdownicn = arrdown;
 export const dashbrdicn = dashbrd;
+export const rightarricn = rightarr;
+export const leftarricn = leftarr;
 
 export const cutomersFeature: SiderBarListProps[] = [
   {

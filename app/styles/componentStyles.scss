@@ -335,13 +335,13 @@
   // padding: 5rem 5rem;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   .body-container {
     width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
   }
 
@@ -355,49 +355,66 @@
   }
 }
 
-.card-container {
+// .card-container {
+//   width: 100%;
+
+.card-section {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
-  row-gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
 
   .card-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
-    height: 8rem;
-    // width: 15rem;
+    row-gap: 0.1rem;
     width: calc(50% - 1rem);
+    height: 7rem;
+    padding-left: 1.5rem;
     background-color: $bg-white-color;
     border: 1px solid #213f7d0f;
     box-shadow: $card-box-shadow;
     border-radius: $card-border-radius;
-    padding-left: 1.5rem;
     .role {
-      font-size: $inputfield-placeholder-font-size;
+      font-size: $semi-small-font-size;
       font-weight: $semi-normal-font-weight;
       line-height: $inputfield-searchbar-placeholder-font-size-line-height;
       color: $secondary-header-color;
     }
     .qtity {
-      font-size: $regular-font-size;
+      font-size: $normal-text-line-height;
       font-weight: $semi-bold-font-weight;
       line-height: $regular-line-height;
       color: $primary-header-color;
     }
+    img {
+      width: 20px;
+    }
   }
 }
-
+// }
+.table-section {
+  width: 100%;
+}
 .table-data {
   background-color: $bg-white-color;
   border: 1px solid #213f7d0f;
   box-shadow: $card-box-shadow;
   border-radius: $card-border-radius;
   height: fit-content;
-  padding: 1.5rem 1.5rem .5rem 1.5rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  // overflow-x: auto;
+  width: 100%;
+
   table {
+    white-space: nowrap;
+    // min-width: 15rem;
     width: 100%;
+    border-collapse: collapse;
   }
   .table-head {
     .table-header-content {
@@ -409,6 +426,7 @@
       font-size: $semi-small-font-size;
       line-height: $semi-small-line-height;
       color: $secondary-header-color;
+      // margin: 0 1rem;
     }
 
     img {
@@ -418,16 +436,47 @@
   .table-data-row td {
     border-bottom: 1px solid rgba(33, 63, 125, 0.1);
     height: 3.8rem;
+    font-weight: $semi-small-font-size;
+    font-size: $inputfield-placeholder-font-size;
+    line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    color: $secondary-header-color;
+    // margin: 0 1rem;
   }
   .table-data-row.last-row td {
     border-bottom: none;
   }
-
-  .table-data-row {
-    font-weight: $secondary-header-font-weight;
-    font-size: $inputfield-placeholder-font-size;
-    line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+}
+.pagination-controls {
+  display: flex;
+  gap: 2rem;
+  .navigate {
+    background-color: rgba(33, 63, 125, 0.1);
+    border-radius: 4px;
+    border: 0;
+    padding: 3px 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button {
+    cursor: pointer;
+    border: 0;
+    background: none;
     color: $secondary-header-color;
+    font-weight: $secondary-header-font-weight;
+    font-size: $normal-font-size;
+    line-height: $normal-text-line-height;
+  }
+  button.active {
+    color: rgba(84, 95, 125, 1);
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  .inactive-page {
+    color: rgba(33, 63, 125, 0.6);
   }
 }
 
@@ -537,16 +586,32 @@
       display: none;
     }
   }
-  .card-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
+  .card-section {
     .card-item {
       margin: 0;
       height: 10rem;
       width: calc(25% - 1rem);
+      row-gap: 1rem;
+      .role {
+        font-size: $inputfield-placeholder-font-size;
+        font-weight: $semi-normal-font-weight;
+        line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+        color: $secondary-header-color;
+      }
+      .qtity {
+        font-size: $regular-font-size;
+        font-weight: $semi-bold-font-weight;
+        line-height: $regular-line-height;
+        color: $primary-header-color;
+      }
+      img {
+        width: 20px;
+      }
+    }
+  }
+  .table-data {
+    .table-data-row td {
+      font-size: $inputfield-placeholder-font-size;
     }
   }
 }
