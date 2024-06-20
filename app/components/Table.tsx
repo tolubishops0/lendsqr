@@ -5,10 +5,13 @@ import Image from "next/image";
 import { dashboardTableData, filter, more } from "../lib/lib";
 import { DataDetails } from "../types/type";
 import { parseISO, format } from "date-fns";
-import { rightarricn, leftarricn } from "../lib/lib";
+import Pagination from "./Pagination";
+import Filters from "./Filters";
+
 interface DataProps {
   dataList: DataDetails[];
 }
+
 const Table = ({ dataList }: DataProps) => {
   const DateFormatter = (date: string) => {
     const parsedDate = parseISO(date?.replace(/\s+/g, ""));
@@ -16,26 +19,69 @@ const Table = ({ dataList }: DataProps) => {
   };
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [dataCount, setDataCount] = useState<number>(10);
-  console.log(dataCount);
-  const itemsPerPage = 10;
-  const totalPages = Math.ceil(dataList?.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentPageData = dataList.slice(startIndex, startIndex + itemsPerPage);
+  const [filters, setFilters] = useState({
+    name: "",
+    email: "",
+    organization: "",
+    date: "",
+    status: "",
+    phoneNumber: "",
+  });
 
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    setDataCount(itemsPerPage - 10);
   };
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    setDataCount(itemsPerPage + 10);
   };
 
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
+
+  const handleFilterChange = (newFilters: {
+    name: string;
+    email: string;
+    organization: string;
+    date: string;
+    status: string;
+    phoneNumber: string;
+  }) => {
+    setFilters(newFilters);
+    setCurrentPage(1);
+  };
+
+  const filteredData = dataList.filter((item) => {
+    console.log(item)
+   
+    const expectedEmail = `${item.firstName.toLowerCase()}@${item.company.toLowerCase()}.com`;
+
+    return (
+      (filters.name === "" ||
+        item.firstName.toLowerCase().includes(filters.name.toLowerCase())) &&
+      (filters.email === "" ||
+        expectedEmail.includes(filters.email.toLowerCase())) &&
+      (filters.organization === "" ||
+        item.company
+          .toLowerCase()
+          .includes(filters.organization.toLowerCase())) &&
+      // (filters.date === "" ||
+      //   DateFormatter(item.dateJoined) === DateFormatter(filters.date)) &&
+      (filters.status === "" ||
+        item.status.toLowerCase() === filters.status.toLowerCase()) &&
+      (filters.phoneNumber === "" ||
+        (item.phoneNumber &&
+          item.phoneNumber.toString().includes(filters.phoneNumber)))
+    );
+  });
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(dataList?.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentPageData = filteredData.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   const handleStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -117,6 +163,7 @@ const Table = ({ dataList }: DataProps) => {
 
   return (
     <div className="table-section">
+      <Filters onFilterChange={handleFilterChange} />
       <div className="table-data">
         <table className="table">
           <thead>
@@ -144,7 +191,9 @@ const Table = ({ dataList }: DataProps) => {
                 }`}>
                 <td>{item.company}</td>
                 <td>{item.firstName}</td>
-                <td>{item.firstName}@gmail.com</td>
+                <td>
+                  {item.firstName}@{item.company.toLocaleLowerCase()}.com
+                </td>
                 <td>0{item.phoneNumber}</td>
                 <td>{DateFormatter(item.dateJoined)}</td>
                 <td>{handleStatusColor(item.status)}</td>
@@ -156,33 +205,16 @@ const Table = ({ dataList }: DataProps) => {
           </tbody>
         </table>
       </div>
-      <div className="pagination-controls">
-        <button
-          className="navigate"
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}>
-          <Image src={leftarricn} alt="filter-icon" className="arr-icon" />
-        </button>
-        {[...Array(0, 2, 3, 15, 16)].map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageClick(index + 1)}
-            disabled={currentPage === index + 1}
-            className={currentPage === index ? "active-page" : "inactive-page"}>
-            {index + 1}
-          </button>
-        ))}
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className="navigate">
-          <Image src={rightarricn} alt="filter-icon" className="arr-icon" />
-        </button>
-      </div>
-
-      <div>
-        show {Math.abs(dataCount)} of {dataList?.length}
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        startIndex={startIndex}
+        itemsPerPage={itemsPerPage}
+        dataListLength={filteredData.length}
+        onPageChange={handlePageClick}
+        onPrevPage={handlePrevPage}
+        onNextPage={handleNextPage}
+      />
     </div>
   );
 };

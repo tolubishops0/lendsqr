@@ -446,37 +446,70 @@
     border-bottom: none;
   }
 }
-.pagination-controls {
+.pagination-section {
+  margin-top: 1.5rem;
   display: flex;
-  gap: 2rem;
-  .navigate {
-    background-color: rgba(33, 63, 125, 0.1);
-    border-radius: 4px;
-    border: 0;
-    padding: 3px 5px;
-    text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  .pagination-controls {
+    display: flex;
+    gap: 2rem;
+    .navigate {
+      background-color: rgba(33, 63, 125, 0.1);
+      border-radius: 4px;
+      border: 0;
+      padding: 3px 5px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+      color: $secondary-header-color;
+      font-weight: $secondary-header-font-weight;
+      font-size: $normal-font-size;
+      line-height: $normal-text-line-height;
+    }
+    button.active {
+      color: rgba(84, 95, 125, 1);
+    }
+    button:disabled {
+      cursor: not-allowed;
+    }
+
+    button.inactive-page {
+      color: rgba(33, 63, 125, 0.6);
+    }
+  }
+}
+
+.table-info {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  .style-showing {
+    font-weight: $secondary-header-font-weight;
+    font-size: $inputfield-placeholder-font-size;
+    line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    color: $secondary-header-color;
+  }
+  .style-count {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  button {
-    cursor: pointer;
-    border: 0;
-    background: none;
+    gap: 1.5rem;
+    background-color: rgba($primary-header-color, 0.1);
+    border-radius: $card-border-radius;
+    height: 1.875rem;
+    width: 5rem;
     color: $secondary-header-color;
-    font-weight: $secondary-header-font-weight;
-    font-size: $normal-font-size;
-    line-height: $normal-text-line-height;
-  }
-  button.active {
-    color: rgba(84, 95, 125, 1);
-  }
-  button:disabled {
-    cursor: not-allowed;
-  }
-
-  .inactive-page {
-    color: rgba(33, 63, 125, 0.6);
+    font-size: $inputfield-placeholder-font-size;
+    line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    font-weight: $semi-normal-font-weight;
   }
 }
 

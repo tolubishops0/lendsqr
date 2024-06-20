@@ -66,4 +66,16 @@ export interface DataDetails {
   residence: string;
   userId: string;
   userTeir: string;
+  length?: number;
+}
+
+export interface FiltersProps {
+  onFilterChange: (filters: {
+    name: string;
+    email: string;
+    organization: string;
+    date: string;
+    status: string;
+    phoneNumber: string;
+  }) => void;
 }
