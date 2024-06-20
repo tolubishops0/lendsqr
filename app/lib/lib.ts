@@ -10,6 +10,9 @@ import rightarr from "../../public/assets/rightarricn.svg";
 import leftarr from "../../public/assets/leftarricn.svg";
 
 import dashbrd from "../../public/assets/dashbrdicn.svg";
+import activateusericn from "../../public/assets/activateusericn.svg";
+import backlisticn from "../../public/assets/backlisticn.svg";
+import viewdetailsicn from "../../public/assets/viewdetailsicn.svg";
 
 //NAVBAR
 import searchicn from "../../public/assets/serachicn.svg";
@@ -159,6 +162,20 @@ export const settings: SiderBarListProps[] = [
   {
     label: "Audit Logs",
     icon: auditlogsicn,
+  },
+];
+export const viewmore: SiderBarListProps[] = [
+  {
+    label: "View Details",
+    icon: viewdetailsicn,
+  },
+  {
+    label: "Blacklist User",
+    icon: backlisticn,
+  },
+  {
+    label: "Activate User",
+    icon: activateusericn,
   },
 ];
 export const userCard: UserCardListProps[] = [

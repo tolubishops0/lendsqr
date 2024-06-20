@@ -19,6 +19,7 @@ const Pagination = ({
   totalPages,
   startIndex,
   dataListLength,
+  itemsPerPage,
   onPageChange,
   onPrevPage,
   onNextPage,
@@ -28,7 +29,7 @@ const Pagination = ({
       <div className="table-info">
         <p className="style-showing">Showing </p>
         <p className="style-count">
-          {startIndex}
+          {currentPage * itemsPerPage}
           <Image src={arrdownicn} alt="filter-icon" className="arr-icon" />
         </p>
         <p className="style-showing">out of {dataListLength}</p>

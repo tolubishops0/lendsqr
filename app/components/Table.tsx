@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { dashboardTableData, filter, more } from "../lib/lib";
+import { dashboardTableData, filter, more, viewmore } from "../lib/lib";
 import { DataDetails } from "../types/type";
 import { parseISO, format } from "date-fns";
 import Pagination from "./Pagination";
 import Filters from "./Filters";
+import Link from "next/link";
 
 interface DataProps {
   dataList: DataDetails[];
@@ -19,6 +20,14 @@ const Table = ({ dataList }: DataProps) => {
   };
 
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [toggleFilter, setToglefilter] = useState<boolean>(false);
+  const [toggleViewMore, setTogleViewMore] = useState<boolean>(false);
+  const [userId, setSetUserId] = useState<number>();
+  const [popupPosition, setPopupPosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+
   const [filters, setFilters] = useState({
     name: "",
     email: "",
@@ -53,8 +62,6 @@ const Table = ({ dataList }: DataProps) => {
   };
 
   const filteredData = dataList.filter((item) => {
-    console.log(item)
-   
     const expectedEmail = `${item.firstName.toLowerCase()}@${item.company.toLowerCase()}.com`;
 
     return (
@@ -66,8 +73,7 @@ const Table = ({ dataList }: DataProps) => {
         item.company
           .toLowerCase()
           .includes(filters.organization.toLowerCase())) &&
-      // (filters.date === "" ||
-      //   DateFormatter(item.dateJoined) === DateFormatter(filters.date)) &&
+      (filters.date === "" || item.dateJoined.includes(filters.date)) &&
       (filters.status === "" ||
         item.status.toLowerCase() === filters.status.toLowerCase()) &&
       (filters.phoneNumber === "" ||
@@ -75,6 +81,7 @@ const Table = ({ dataList }: DataProps) => {
           item.phoneNumber.toString().includes(filters.phoneNumber)))
     );
   });
+
   const itemsPerPage = 10;
   const totalPages = Math.ceil(dataList?.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -161,9 +168,52 @@ const Table = ({ dataList }: DataProps) => {
     }
   };
 
+  const handleViewMoreToggle = (
+    e: React.MouseEvent<HTMLImageElement>,
+    id: number
+  ) => {
+    e.stopPropagation();
+    setPopupPosition({ x: e.clientX, y: e.clientY });
+    setTogleViewMore(!toggleViewMore);
+    setSetUserId(id);
+  };
+  // const handleViewMoreDetailsRoute = (
+  //   e: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  // ) => {
+  //   <Link />;
+  //   setTogleViewMore(!toggleViewMore);
+  // };
+
+  const ViewMorecontainer = () => {
+    return (
+      <div
+        className="view-more-container"
+        style={{
+          position: "fixed",
+          top: popupPosition?.y,
+          right: "4%",
+        }}>
+        {viewmore.map((item, index) => (
+          <Link className="link" key={index} href={`user/${userId}`}>
+            <span
+              onClick={() => setTogleViewMore(!toggleViewMore)}
+              key={index}
+              className="view-more-item">
+              <Image src={item.icon} alt="item-icon" />
+              {item.label}
+            </span>
+          </Link>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="table-section">
-      <Filters onFilterChange={handleFilterChange} />
+      {toggleViewMore && <ViewMorecontainer />}
+      {toggleFilter && (
+        <Filters dataList={dataList} onFilterChange={handleFilterChange} />
+      )}
       <div className="table-data">
         <table className="table">
           <thead>
@@ -173,6 +223,7 @@ const Table = ({ dataList }: DataProps) => {
                   <span className="table-header-content">
                     <p>{item}</p>
                     <Image
+                      onClick={() => setToglefilter(!toggleFilter)}
                       src={filter}
                       alt="filter-icon"
                       className="filter-icon"
@@ -192,13 +243,19 @@ const Table = ({ dataList }: DataProps) => {
                 <td>{item.company}</td>
                 <td>{item.firstName}</td>
                 <td>
-                  {item.firstName}@{item.company.toLocaleLowerCase()}.com
+                  {item.firstName.toLocaleLowerCase()}@
+                  {item.company.toLocaleLowerCase()}.com
                 </td>
                 <td>0{item.phoneNumber}</td>
                 <td>{DateFormatter(item.dateJoined)}</td>
                 <td>{handleStatusColor(item.status)}</td>
                 <td>
-                  <Image src={more} alt="more-icon" />
+                  <Image
+                    onClick={(e) => handleViewMoreToggle(e, item.id)}
+                    src={more}
+                    alt="more-icon"
+                    className="more-icon"
+                  />
                 </td>
               </tr>
             ))}

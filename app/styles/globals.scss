@@ -4,7 +4,6 @@
 @import "variables.scss";
 // @import "componentStyles.scss";
 
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -46,7 +45,13 @@ body {
     grid-template-rows: 6.25rem auto 3fr;
     grid-template-areas:
       "header header header header"
-      "sidebar body body body"
+      "sidebar body body body";
   }
 }
 
+input {
+  :focus {
+    outline: 0;
+    border: 0;
+  }
+}
