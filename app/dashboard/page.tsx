@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header/Header";
 import SideBar from "../components/Sidebar/SideBar";
 import Users from "../components/User/User";
@@ -12,7 +12,6 @@ const Dashboard = () => {
     setTogleSideBar(!toggleSideBar);
   };
 
- 
 
   return (
     <div className="grid_container">

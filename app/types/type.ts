@@ -67,6 +67,8 @@ export interface DataDetails {
   userId: string;
   userTeir: string;
   length?: number;
+  bvn: number;
+  employmentSector: string;
 }
 
 export interface FiltersProps {

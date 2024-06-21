@@ -1,6 +1,7 @@
 "use client";
-
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import {
   sworgicn,
@@ -9,10 +10,34 @@ import {
   cutomersFeature,
   businessFeatures,
   settings,
+  systemicn,
+  signouticn,
+  divericn,
 } from "@/app/lib/lib";
+import { SiderBarListProps } from "@/app/types/type";
+
 import "../../styles/componentStyles.scss";
 
 const SideBarList = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [updateSideBarList, setUpdateSodebarlist] = useState<
+    SiderBarListProps[] | null
+  >(settings);
+
+  const settingLastTab = {
+    label: "System Messages",
+    icon: systemicn,
+  };
+
+  useEffect(() => {
+    if (pathname.includes("user")) {
+      setUpdateSodebarlist([...settings, settingLastTab]);
+    } else {
+      setUpdateSodebarlist(settings);
+    }
+  }, [pathname]);
+
   const [activeNav, setActiveNav] = useState<string>("Users");
   const [toggleCustomerSubList, setToggleCustomerSubList] =
     useState<boolean>(false);
@@ -29,6 +54,11 @@ const SideBarList = () => {
     return <div className="active-bar"></div>;
   };
 
+  const handleLogout = () => {
+    router.push("/");
+    localStorage.removeItem('dashboardData');
+  };
+
   return (
     <div className="sidebar-list-container">
       <div className="sidebar-headers">
@@ -42,12 +72,11 @@ const SideBarList = () => {
           <span>Dashboard</span>
         </div>
       </div>
-      <div
-        onClick={handleCustomerSubListToggle}
-        className="list-title">
-        <span>CUSTOMER</span>
+      <div onClick={handleCustomerSubListToggle} className="list-title">
+        <span>CUSTOMERS</span>
         <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
+
       {toggleCustomerSubList && (
         <div className="sidebar-sublist-sm ">
           <ul className="">
@@ -136,7 +165,7 @@ const SideBarList = () => {
         <span>SETTINGS</span>
       </div>
       <ul>
-        {settings.map((item, index) => (
+        {updateSideBarList?.map((item, index) => (
           <li
             onClick={() => setActiveNav(item.label)}
             key={index}
@@ -147,10 +176,24 @@ const SideBarList = () => {
               <Image src={item.icon} alt="Dashboard-icon" />
               <span>{item.label}</span>
             </div>
+
             {activeNav === item.label && <ActiveBar />}
           </li>
         ))}
       </ul>
+
+      {pathname.includes("user") && (
+        <div className="logout-container">
+          <Image src={divericn} alt="divider-icon" />
+          <div
+            onClick={handleLogout}
+            className="logout-tab">
+            <Image src={signouticn} alt="divider-icon" />
+            <span>Logout</span>
+          </div>
+          <span className="version">v1.2.0</span>
+        </div>
+      )}
     </div>
   );
 };

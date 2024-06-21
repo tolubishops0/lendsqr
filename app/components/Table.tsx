@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { dashboardTableData, filter, more, viewmore } from "../lib/lib";
 import { DataDetails } from "../types/type";
 import { parseISO, format } from "date-fns";
 import Pagination from "./Pagination";
+import { useClickAway } from "react-use";
 import Filters from "./Filters";
 import Link from "next/link";
 
@@ -35,6 +36,13 @@ const Table = ({ dataList }: DataProps) => {
     date: "",
     status: "",
     phoneNumber: "",
+  });
+
+  const refClickAway = useRef<HTMLDivElement>(null);
+  useClickAway(refClickAway, () => {
+    if (toggleViewMore) {
+      setTogleViewMore(!toggleViewMore);
+    }
   });
 
   const handlePrevPage = () => {
@@ -177,16 +185,11 @@ const Table = ({ dataList }: DataProps) => {
     setTogleViewMore(!toggleViewMore);
     setSetUserId(id);
   };
-  // const handleViewMoreDetailsRoute = (
-  //   e: React.MouseEvent<HTMLSpanElement, MouseEvent>
-  // ) => {
-  //   <Link />;
-  //   setTogleViewMore(!toggleViewMore);
-  // };
 
   const ViewMorecontainer = () => {
     return (
       <div
+        ref={refClickAway}
         className="view-more-container"
         style={{
           position: "fixed",
@@ -210,6 +213,7 @@ const Table = ({ dataList }: DataProps) => {
 
   return (
     <div className="table-section">
+      
       {toggleViewMore && <ViewMorecontainer />}
       {toggleFilter && (
         <Filters dataList={dataList} onFilterChange={handleFilterChange} />

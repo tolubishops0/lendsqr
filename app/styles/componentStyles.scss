@@ -1,6 +1,35 @@
 @import "variables.scss";
 @import "_mixins.scss";
 
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(130, 136, 136, 0.6);
+}
+
+.loader {
+  border: 1rem solid $font-color-light-Green;
+  border-top: 1rem solid $primary-header-color;
+  border-radius: 50%;
+  width: 7.5rem;
+  height: 7.5rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .input-field-cont {
   position: relative;
   display: flex;
@@ -99,6 +128,7 @@
   width: 100%;
   height: 2.5rem;
   background: transparent;
+  position: relative;
 
   .search-input {
     width: 100%;
@@ -124,6 +154,7 @@
   }
 
   .button-searchbar {
+    cursor: pointer;
     width: 3.5rem;
     height: 100%;
     display: flex;
@@ -135,6 +166,31 @@
     img {
       width: 0.9rem;
       height: auto;
+    }
+  }
+
+  .autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 0.5rem 0 0 0;
+    width: 65%;
+    max-height: 20rem;
+    overflow-y: auto;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    .autocomplete-item {
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .autocomplete-item:hover {
+      background-color: rgba(57, 205, 204, 0.06);
     }
   }
 }
@@ -226,6 +282,7 @@
 }
 
 .sidebar {
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.04);
   .sidebar-sm {
     background: $bg-white-color;
     width: 55%;
@@ -262,9 +319,9 @@
     padding-left: 1.5rem;
     span {
       color: $primary-header-color;
-      font-weight: $secondary-header-font-weight;
-      font-size: $inputfield-placeholder-font-size;
-      line-height: $normal-text-line-height;
+      font-weight: $semi-normal-font-weight;
+      font-size: $semi-small-font-size;
+      line-height: $semi-small-line-height;
     }
   }
   .sidebar-header-main {
@@ -275,7 +332,7 @@
     span {
       color: $primary-header-color;
       font-weight: $secondary-header-font-weight;
-      font-size: $inputfield-placeholder-font-size;
+      font-size: $normal-font-size;
       line-height: $normal-text-line-height;
     }
   }
@@ -300,6 +357,7 @@
     display: flex;
     flex-direction: column;
     margin: 0.5rem 0;
+    position: relative;
 
     li {
       display: flex;
@@ -316,13 +374,35 @@
       gap: 0.5rem;
       padding-left: 1.5rem;
     }
+    .active-bar {
+      background-color: $font-color-light-Green;
+      height: 2.5rem;
+      width: 2px;
+      position: absolute;
+      left: 0;
+    }
   }
-  .active-bar {
-    background-color: $font-color-light-Green;
-    height: 2.5rem;
-    width: 2px;
-    position: absolute;
-    left: 0;
+  .logout-container {
+    margin-top: 2rem;
+    width: 100%;
+    .logout-tab {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-left: 1.5rem;
+      text-decoration: none;
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+    }
+    span {
+      color: $primary-header-color;
+      font-weight: $secondary-header-font-weight;
+      font-size: $normal-font-size;
+      line-height: $normal-text-line-height;
+    }
+    .version {
+      padding-left: 1.5rem;
+    }
   }
 }
 
@@ -349,6 +429,258 @@
       font-weight: $semi-normal-font-weight;
       line-height: $regular-line-height;
       color: $primary-header-color;
+    }
+  }
+  .user-data-container {
+    width: 90%;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .back-link-container {
+      text-decoration: none;
+
+      .back-link {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        .back-link-text {
+          color: $secondary-header-color;
+          font-size: $normal-font-size;
+          line-height: $normal-text-line-height;
+          font-weight: $semi-normal-font-weight;
+        }
+      }
+    }
+    .top-header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      .button-use-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        .btn-user {
+          font-weight: $semi-bold-font-weight;
+          font-size: $inputfield-placeholder-font-size;
+          line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+          letter-spacing: 10%;
+          width: 10.625rem;
+          height: 2.5rem;
+          background-color: transparent;
+          cursor: pointer;
+          transition: all 0.3s ease-out;
+        }
+        .blacklist {
+          color: $red-text;
+          border: 1px solid $red-text;
+          border-radius: $button-border-radius;
+          &:hover {
+            border: 1px solid darken($red-text, 10%);
+            color: darken($red-text, 10%);
+          }
+        }
+        .activate {
+          color: $font-color-light-Green;
+          border: 1px solid $font-color-light-Green;
+          border-radius: $button-border-radius;
+
+          &:hover {
+            border: 1px solid darken($font-color-light-Green, 10%);
+            color: darken($font-color-light-Green, 10%);
+          }
+        }
+      }
+    }
+  }
+  .all-user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.userbank-container {
+  background-color: $bg-white-color;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  height: 13.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 1rem;
+  border-radius: 4px;
+
+  .userbank {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    padding: 1.5rem 2rem 0 2rem;
+    gap: 2rem;
+
+    .user-name {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: $semi-normal-font-weight;
+      line-height: 1.615rem;
+      font-size: 1.375rem;
+      color: $primary-header-color;
+    }
+    .user-id {
+      text-align: left;
+      color: $secondary-header-color;
+      font-weight: $secondary-header-font-weight;
+      font-size: $inputfield-placeholder-font-size;
+      line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    }
+
+    .username {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      flex-direction: column;
+      margin-left: -0.7rem;
+      .user-tier {
+        color: $secondary-header-color;
+        font-weight: $semi-normal-font-weight;
+        font-size: $inputfield-placeholder-font-size;
+        line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+      }
+      .balance {
+        font-weight: $semi-normal-font-weight;
+        line-height: 1.613125rem;
+        font-size: 1.375rem;
+        color: $primary-header-color;
+      }
+      .acct {
+        font-weight: $secondary-header-font-weight;
+        color: $primary-header-color;
+        font-size: $inputfield-placeholder-font-size;
+        line-height: $semi-small-line-height;
+      }
+    }
+  }
+  .user-activity {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    width: 90%;
+    margin: 0 4rem 0 auto;
+
+    .tab-lik {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: $normal-font-size;
+      font-weight: $secondary-header-font-weight;
+      line-height: 1.193125rem;
+      color: rgba(0, 0, 0, 0.8);
+      margin-bottom: 0.3rem;
+    }
+    .active-link {
+      color: $font-color-light-Green;
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  .active-tab {
+    background-color: $font-color-light-Green;
+    height: 0.125rem;
+    width: 9.625rem;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.bio-data-container {
+  height: 56.875rem;
+  width: 100%;
+  background-color: $bg-white-color;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  .bio-data {
+    padding: 2rem;
+    .bio-data-sect {
+      .bio-data-header {
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        line-height: $normal-text-line-height;
+        font-size: $normal-font-size;
+        color: $primary-header-color;
+      }
+
+      .bio-data-section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+        column-gap: 5rem;
+        row-gap: 2rem;
+        .bio-key-value {
+          min-width: 13%;
+          display: flex;
+          flex-direction: column;
+          .bio-key {
+            text-transform: uppercase;
+            font-weight: $secondary-header-font-weight;
+            font-size: $semi-small-font-size;
+            line-height: $semi-small-line-height;
+            color: $secondary-header-color;
+          }
+          .bio-value {
+            margin-top: 0.5rem;
+            font-weight: $semi-normal-font-weight;
+            font-size: $normal-font-size;
+            line-height: $normal-text-line-height;
+            color: $secondary-header-color;
+          }
+        }
+      }
+    }
+    .line {
+      width: fit-content;
+      margin: 1.6rem 0 2rem 0;
+    }
+    .education {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: left;
+      align-items: flex-start;
+      column-gap: 3.5rem;
+      row-gap: 2rem;
+    }
+    .edu {
+      display: flex;
+      flex-direction: column;
+      min-width: 20%;
+
+      .bio-key {
+        text-transform: uppercase;
+        font-weight: $secondary-header-font-weight;
+        font-size: $semi-small-font-size;
+        line-height: $semi-small-line-height;
+        color: $secondary-header-color;
+      }
+      .bio-value {
+        margin-top: 0.5rem;
+        font-weight: $semi-normal-font-weight;
+        font-size: $normal-font-size;
+        line-height: $normal-text-line-height;
+        color: $secondary-header-color;
+      }
+    }
+    .bio-data-sect-last {
+      margin-top: 3rem;
     }
   }
 }
@@ -395,7 +727,7 @@
 .view-more-container {
   border-radius: 4px;
   border: 1px solid rgba(84, 95, 125, 0.04);
-  box-shadow: 3px 5px 20px 0px #0000000a;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
   background-color: $bg-white-color;
   width: 11.25rem;
   height: 8.125rem;
@@ -404,7 +736,7 @@
   justify-content: space-evenly;
   align-items: flex-start;
   padding-left: 1.5rem;
-  .link{
+  .link {
     text-decoration: none;
   }
 
@@ -418,6 +750,10 @@
     line-height: $inputfield-searchbar-placeholder-font-size-line-height;
     color: $secondary-header-color;
     cursor: pointer;
+    transition: all 0.3s ease-out;
+    &:hover {
+      color: lighten($secondary-header-color, 30%);
+    }
   }
 }
 .filters {
@@ -433,7 +769,7 @@
   border: 1px solid #545f7d24;
   box-shadow: 3px 5px 20px 0px #0000000a;
   background-color: $bg-white-color;
-  padding: 2rem 0.8rem ;
+  padding: 2rem 0.8rem;
 
   .input-container {
     display: flex;
@@ -455,10 +791,6 @@
       border-radius: $button-border-radius;
       border: $inputfield-border;
 
-      .select {
-        color: red;
-      }
-
       :focus {
         outline: 0;
         border: 1px solid $primary-header-color;
@@ -471,7 +803,6 @@
         line-height: $inputfield-searchbar-placeholder-font-size-line-height;
       }
     }
-    
   }
   .filter-buttons-container {
     width: 100%;
@@ -517,7 +848,7 @@
     white-space: nowrap;
     // min-width: 15rem;
     width: 100%;
-  
+
     border-collapse: collapse;
   }
   .table-head {
@@ -598,7 +929,6 @@
 
 .table-info {
   display: flex;
-  // justify-content: center;
   align-items: center;
   gap: 0.5rem;
   .style-showing {
@@ -667,6 +997,7 @@
       width: 100%;
       display: flex;
       flex: 2;
+      padding-right: 2rem;
     }
     .header-searchbar-sm {
       display: none;
@@ -761,7 +1092,6 @@
 
 @include respond-to(xlarge) {
   .header {
-    // height: 6.25rem;
     .header-inner {
       width: 100%;
       padding: $page-width;

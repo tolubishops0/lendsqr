@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { logoimg, avatararricn, avataricn, bell, menu } from "@/app/lib/lib";
 import "../../styles/componentStyles.scss";
