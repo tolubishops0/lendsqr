@@ -3,15 +3,16 @@ import React, { useState, useEffect, ReactHTMLElement } from "react";
 import { FiltersProps } from "../types/type";
 import { parseISO, format } from "date-fns";
 import "../styles/componentStyles.scss";
-import InputField from "./InputField";
 import { DataDetails } from "../types/type";
 
 interface DataProps {
   dataList: DataDetails[];
   onFilterChange: FiltersProps["onFilterChange"];
+  ref: string
 }
 
-const Filters = ({ onFilterChange, dataList }: DataProps) => {
+const Filters = ({ onFilterChange, dataList, ref }: DataProps) => {
+  console.log(ref)
   const initialFilters = {
     name: "",
     email: "",
@@ -31,12 +32,12 @@ const Filters = ({ onFilterChange, dataList }: DataProps) => {
     setOrgs(extractedOr);
   }, [dataList]);
 
-  console.log(orgs);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
     const { name, value } = e.target;
+
     setFilters((prevFilters) => ({
       ...prevFilters,
       [name]: value,
@@ -64,7 +65,7 @@ const Filters = ({ onFilterChange, dataList }: DataProps) => {
   };
 
   return (
-    <div className="filters">
+    <div ref={ref} className="filters">
       <div className="input-container">
         <label className="table-header-content">Organization</label>
         <select
@@ -86,7 +87,7 @@ const Filters = ({ onFilterChange, dataList }: DataProps) => {
         <label className="table-header-content">username</label>
         <input
           type="text"
-          name="username"
+          name="name"
           placeholder="username"
           value={filters.name}
           onChange={handleChange}

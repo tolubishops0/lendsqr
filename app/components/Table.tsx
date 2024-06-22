@@ -40,8 +40,9 @@ const Table = ({ dataList }: DataProps) => {
 
   const refClickAway = useRef<HTMLDivElement>(null);
   useClickAway(refClickAway, () => {
-    if (toggleViewMore) {
+    if (toggleViewMore || toggleFilter) {
       setTogleViewMore(!toggleViewMore);
+      setToglefilter(!toggleFilter);
     }
   });
 
@@ -213,10 +214,13 @@ const Table = ({ dataList }: DataProps) => {
 
   return (
     <div className="table-section">
-      
       {toggleViewMore && <ViewMorecontainer />}
       {toggleFilter && (
-        <Filters dataList={dataList} onFilterChange={handleFilterChange} />
+        <Filters
+          ref={refClickAway}
+          dataList={dataList}
+          onFilterChange={handleFilterChange}
+        />
       )}
       <div className="table-data">
         <table className="table">

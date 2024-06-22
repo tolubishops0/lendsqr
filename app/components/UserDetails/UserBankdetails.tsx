@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { DataDetails } from "../types/type";
+import { DataDetails } from "../../types/type";
 import Image from "next/image";
 import {
   emptyavatatricn,
@@ -8,7 +8,7 @@ import {
   ptystart,
   line2,
   bankAcctivity,
-} from "../lib/lib";
+} from "../../lib/lib";
 
 interface DataProps {
   userData: DataDetails[];
@@ -43,7 +43,7 @@ const UserBankdetails = ({ userData }: DataProps) => {
             </span>
             <p className="user-id">{data?.userId}</p>
           </div>
-          <Image src={line2} alt="line2-icon" />
+          <Image src={line2} alt="line2-icon" className="vert-line" />
           <div className="username">
             <p className="user-tier">User's Tier</p>
             <span>
@@ -52,12 +52,11 @@ const UserBankdetails = ({ userData }: DataProps) => {
               <Image src={ptystart} alt="star-icon" />
             </span>
           </div>
-          <Image src={line2} alt="line2-icon" />
+          <Image src={line2} alt="line2-icon" className="vert-line" />
           <div className="username">
             <p className="balance">{data?.balance}</p>
             <span className="acct">
-              {data?.accNumber}/
-              {data?.bank}
+              {data?.accNumber}/{data?.bank}
             </span>
           </div>
         </div>

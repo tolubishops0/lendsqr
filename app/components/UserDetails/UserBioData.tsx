@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { DataDetails } from "../types/type";
-import { divericn } from "../lib/lib";
+import { DataDetails } from "../../types/type";
+import { divericn } from "../../lib/lib";
 
 interface DataProps {
   userData: DataDetails[];

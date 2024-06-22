@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { backarrow } from "@/app/lib/lib";
 import "../../styles/componentStyles.scss";
-import UserBankdetails from "../UserBankdetails";
+import UserBankdetails from "./UserBankdetails";
 import { DataDetails } from "@/app/types/type";
-import UserBioData from "../UserBioData";
+import UserBioData from "./UserBioData";
 
 interface UserDataProps {
   userId: string;

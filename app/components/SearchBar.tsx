@@ -46,7 +46,7 @@ const SearchBar = () => {
     setUserId(item.id);
     setIsSearchTerm(true);
   };
-  
+
   const handleRouting = (e: any): void => {
     e.preventDefault();
     if (pathname.includes("user")) {

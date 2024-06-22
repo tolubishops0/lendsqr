@@ -458,6 +458,8 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      flex-direction: column;
+      gap: 1rem;
       .button-use-container {
         display: flex;
         justify-content: center;
@@ -519,8 +521,16 @@
     width: 100%;
     justify-content: start;
     align-items: center;
-    padding: 1.5rem 2rem 0 2rem;
-    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0 1.5rem;
+    row-gap: 0.5rem;
+    column-gap: 2rem;
+    img {
+      width: 15%;
+    }
+    .vert-line {
+      display: none;
+    }
 
     .user-name {
       display: flex;
@@ -528,7 +538,7 @@
       gap: 0.5rem;
       font-weight: $semi-normal-font-weight;
       line-height: 1.615rem;
-      font-size: 1.375rem;
+      font-size: 0.9rem;
       color: $primary-header-color;
     }
     .user-id {
@@ -554,7 +564,7 @@
       .balance {
         font-weight: $semi-normal-font-weight;
         line-height: 1.613125rem;
-        font-size: 1.375rem;
+        font-size: 1rem;
         color: $primary-header-color;
       }
       .acct {
@@ -571,9 +581,11 @@
     position: relative;
     align-items: center;
     width: 90%;
-    margin: 0 4rem 0 auto;
+    // margin: 0 4rem 0 auto;
+    overflow-x: auto;
 
     .tab-lik {
+      min-width: 45%;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -597,18 +609,20 @@
     width: 9.625rem;
     position: absolute;
     bottom: 0;
+    display: none;
   }
 }
 
 .bio-data-container {
-  height: 56.875rem;
+  height: 100%;
   width: 100%;
   background-color: $bg-white-color;
   border: 1px solid rgba(33, 63, 125, 0.06);
   box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   .bio-data {
-    padding: 2rem;
+    padding: 1rem;
+
     .bio-data-sect {
       .bio-data-header {
         margin-bottom: 1.5rem;
@@ -623,10 +637,10 @@
         flex-wrap: wrap;
         flex-direction: row;
         align-items: flex-start;
-        column-gap: 5rem;
+        column-gap: 2rem;
         row-gap: 2rem;
         .bio-key-value {
-          min-width: 13%;
+          min-width: 25%;
           display: flex;
           flex-direction: column;
           .bio-key {
@@ -701,7 +715,7 @@
     row-gap: 0.1rem;
     width: calc(50% - 1rem);
     height: 7rem;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
     background-color: $bg-white-color;
     border: 1px solid #213f7d0f;
     box-shadow: $card-box-shadow;
@@ -763,13 +777,13 @@
   position: absolute;
   top: 9%;
   left: 1.3%;
-  width: 23%;
-  height: 37.5rem;
+  width: 60%;
+  height: 40rem;
   border-radius: 4px;
   border: 1px solid #545f7d24;
   box-shadow: 3px 5px 20px 0px #0000000a;
   background-color: $bg-white-color;
-  padding: 2rem 0.8rem;
+  padding: 1.5rem 0.8rem;
 
   .input-container {
     display: flex;
@@ -807,12 +821,13 @@
   .filter-buttons-container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    row-gap: 1rem;
     .filter-buttons {
       border: 0;
       height: 2.5rem;
-      width: 6rem;
+      width: 100%;
       font-weight: 600;
       font-size: $inputfield-placeholder-font-size;
       line-height: $inputfield-searchbar-placeholder-font-size-line-height;
@@ -840,15 +855,14 @@
   border: 1px solid #213f7d0f;
   box-shadow: $card-box-shadow;
   border-radius: $card-border-radius;
-  padding: 2rem 2rem 0.5rem 2rem;
+  padding: 2rem 0 0 2rem;
   width: 100%;
   height: 40rem;
+  overflow-x: auto;
 
   table {
-    white-space: nowrap;
-    // min-width: 15rem;
     width: 100%;
-
+    white-space: nowrap;
     border-collapse: collapse;
   }
   .table-head {
@@ -856,12 +870,13 @@
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       gap: 0.5rem;
       font-weight: $semi-bold-font-weight;
       font-size: $semi-small-font-size;
       line-height: $semi-small-line-height;
       color: $secondary-header-color;
-      // margin: 0 1rem;
+      padding-right: 2rem;
       .filter-icon {
         cursor: pointer;
       }
@@ -878,7 +893,7 @@
     font-size: $inputfield-placeholder-font-size;
     line-height: $inputfield-searchbar-placeholder-font-size-line-height;
     color: $secondary-header-color;
-
+    padding-right: 2rem;
     .more-icon {
       cursor: pointer;
     }
@@ -890,8 +905,10 @@
 .pagination-section {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 1rem;
   .pagination-controls {
     display: flex;
     gap: 2rem;
@@ -989,8 +1006,15 @@
       top: 16%;
     }
   }
+  .user-activity {
+    // overflow-x: auto;
+    width: 100%;
+    .tab-lik {
+      max-width: 20%;
+      background-color: red;
+    }
+  }
 }
-
 @include respond-to(large) {
   .header {
     .header-searchbar-lg {
@@ -1084,8 +1108,87 @@
     }
   }
   .table-data {
+    padding: 2rem 1rem 0.5rem 1.5rem;
+    overflow-x: hidden;
     .table-data-row td {
       font-size: $inputfield-placeholder-font-size;
+    }
+    .table-data-row td {
+      padding-right: 0.5rem;
+    }
+  }
+  .body {
+    .user-data-container {
+      .top-header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-direction: row;
+        gap: 0;
+      }
+    }
+  }
+  .pagination-section {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filters {
+    width: 23%;
+    height: 37.5rem;
+    padding: 2rem 0.8rem;
+    .filter-buttons-container {
+      justify-content: space-between;
+    }
+    .filter-buttons {
+      width: 6rem;
+    }
+  }
+
+  .user-activity {
+    overflow-x: hidden;
+    margin: 0 4rem 0 auto;
+    .tab-lik {
+      min-width: fit-content;
+    }
+
+    .userbank {
+      justify-content: start;
+      align-items: center;
+      padding: 1.5rem 2rem 0 2rem;
+      flex-wrap: nowrap;
+      gap: 2rem;
+      row-gap: 0;
+      column-gap: 0;
+      .vert-line {
+        display: block;
+      }
+      .user-name {
+        font-size: 1.375rem;
+      }
+      .balance {
+        font-size: 1.375rem;
+      }
+    }
+  }
+
+  .active-tab {
+    display: block;
+  }
+
+  .bio-data-container {
+    height: 56.875rem;
+    .bio-data {
+      padding: 2rem;
+
+      .bio-data-section {
+        column-gap: 5rem;
+        row-gap: 2rem;
+        .bio-key-value {
+          min-width: 13%;
+          display: flex;
+          flex-direction: column;
+        }
+      }
     }
   }
 }

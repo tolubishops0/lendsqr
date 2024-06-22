@@ -4,7 +4,6 @@ import { userCard } from "../lib/lib";
 
 const Card = () => {
   return (
-    // <div className="card-container">
       <div className="card-section">
         {userCard.map((item, index) => (
           <div key={index} className="card-item">
@@ -14,7 +13,6 @@ const Card = () => {
           </div>
         ))}
       </div>
-    // </div>
   );
 };
 
