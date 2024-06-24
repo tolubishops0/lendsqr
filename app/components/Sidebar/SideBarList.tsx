@@ -24,18 +24,17 @@ const SideBarList = () => {
     SiderBarListProps[] | null
   >(settings);
 
-  const settingLastTab = {
-    label: "System Messages",
-    icon: systemicn,
-  };
-
   useEffect(() => {
+    const settingLastTab = {
+      label: "System Messages",
+      icon: systemicn,
+    };
     if (pathname.includes("user")) {
       setUpdateSodebarlist([...settings, settingLastTab]);
     } else {
       setUpdateSodebarlist(settings);
     }
-  }, [pathname, settingLastTab]);
+  }, [pathname]);
 
   const [activeNav, setActiveNav] = useState<string>("Users");
   const [toggleCustomerSubList, setToggleCustomerSubList] =
@@ -55,7 +54,7 @@ const SideBarList = () => {
 
   const handleLogout = () => {
     router.push("/");
-    localStorage.removeItem('dashboardData');
+    localStorage.removeItem("dashboardData");
   };
 
   return (
@@ -75,8 +74,6 @@ const SideBarList = () => {
         <span>CUSTOMERS</span>
         <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
-
-      
 
       <ul className="sidebar-sublist-lg">
         {cutomersFeature.map((item, index) => (
@@ -98,8 +95,6 @@ const SideBarList = () => {
         <span>BUSINESSES</span>
         <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
-
-      
 
       <ul className="sidebar-sublist-lg">
         {businessFeatures.map((item, index) => (
@@ -142,9 +137,7 @@ const SideBarList = () => {
       {pathname.includes("user") && (
         <div className="logout-container">
           <Image src={divericn} alt="divider-icon" />
-          <div
-            onClick={handleLogout}
-            className="logout-tab">
+          <div onClick={handleLogout} className="logout-tab">
             <Image src={signouticn} alt="divider-icon" />
             <span>Logout</span>
           </div>

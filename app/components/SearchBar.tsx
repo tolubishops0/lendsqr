@@ -33,7 +33,7 @@ const SearchBar = () => {
     } else {
       setFilteredData([]);
     }
-  }, [searchTerm, dataList]);
+  }, [searchTerm]);
 
   useEffect(() => {
     if (searchTerm === "") {
