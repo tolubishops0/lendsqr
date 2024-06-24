@@ -77,28 +77,7 @@ const SideBarList = () => {
         <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
 
-      {toggleCustomerSubList && (
-        <div className="sidebar-sublist-sm ">
-          <ul className="">
-            {cutomersFeature.map((item, index) => (
-              <li
-                onClick={() => setActiveNav(item.label)}
-                key={index}
-                className={`sidebar-header-main  ${
-                  activeNav === item.label
-                    ? "active-nav"
-                    : "dashboard-container "
-                } `}>
-                <div className="list-item">
-                  <Image src={item.icon} alt="Dashboard-icon" />
-                  <span>{item.label}</span>
-                </div>
-                {activeNav === item.label && <ActiveBar />}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      
 
       <ul className="sidebar-sublist-lg">
         {cutomersFeature.map((item, index) => (
@@ -121,28 +100,7 @@ const SideBarList = () => {
         <Image className="arr-icn" src={arrdownicn} alt="switch-org-icon" />
       </div>
 
-      {toggleBusinessSubList && (
-        <div className="sidebar-sublist-sm">
-          <ul className="">
-            {businessFeatures.map((item, index) => (
-              <li
-                onClick={() => setActiveNav(item.label)}
-                key={index}
-                className={`sidebar-header-main  ${
-                  activeNav === item.label
-                    ? "active-nav"
-                    : "dashboard-container "
-                } `}>
-                <div className="list-item">
-                  <Image src={item.icon} alt="Dashboard-icon" />
-                  <span>{item.label}</span>
-                </div>
-                {activeNav === item.label && <ActiveBar />}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      
 
       <ul className="sidebar-sublist-lg">
         {businessFeatures.map((item, index) => (

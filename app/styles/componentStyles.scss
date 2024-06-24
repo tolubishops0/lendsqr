@@ -176,9 +176,10 @@
     right: 0;
     background-color: white;
     border: 1px solid transparent;
-    border-radius: 0.5rem 0 0 0;
-    width: 65%;
-    max-height: 20rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    color: $secondary-header-color;
+    width: 100%;
+    max-height: 10rem;
     overflow-y: auto;
     z-index: 1000;
     list-style: none;
@@ -1150,6 +1151,9 @@
       position: absolute;
       top: 16%;
     }
+  }
+  .autocomplete-list {
+    max-height: 20rem;
   }
   .userbank-container {
     .userbank {

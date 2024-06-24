@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import {
   sworgicn,
@@ -12,13 +11,16 @@ import {
   settings,
   systemicn,
   signouticn,
-  divericn,
 } from "@/app/lib/lib";
 import { SiderBarListProps } from "@/app/types/type";
 
 import "../../styles/componentStyles.scss";
 
-const SideBarListSm = () => {
+interface ToggleProps {
+  toggleSideBar: boolean;
+  handleToggleSidebar: () => void;
+}
+const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const [activeNav, setActiveNav] = useState<string>("Users");
@@ -44,6 +46,12 @@ const SideBarListSm = () => {
   const handleLogout = () => {
     router.push("/");
     localStorage.removeItem("dashboardData");
+  };
+  const handleNavLinkSelection = (item: string) => {
+    if (toggleSideBar) {
+      handleToggleSidebar();
+    }
+    setActiveNav(item);
   };
 
   const settingLastTab = {
@@ -84,7 +92,7 @@ const SideBarListSm = () => {
                   <ul className="">
                     {cutomersFeature.map((item, index) => (
                       <li
-                        onClick={() => setActiveNav(item.label)}
+                        onClick={() => handleNavLinkSelection(item.label)}
                         key={index}
                         className={`${
                           activeNav === item.label ? "active-nav" : ""
@@ -108,7 +116,7 @@ const SideBarListSm = () => {
                   <ul className="">
                     {businessFeatures.map((item, index) => (
                       <li
-                        onClick={() => setActiveNav(item.label)}
+                        onClick={() => handleNavLinkSelection(item.label)}
                         key={index}
                         className={`${
                           activeNav === item.label ? "active-nav" : ""
@@ -132,7 +140,7 @@ const SideBarListSm = () => {
                   <ul className="">
                     {updateSideBarList?.map((item, index) => (
                       <li
-                        onClick={() => setActiveNav(item.label)}
+                        onClick={() => handleNavLinkSelection(item.label)}
                         key={index}
                         className={`${
                           activeNav === item.label ? "active-nav" : ""

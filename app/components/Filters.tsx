@@ -51,7 +51,6 @@ const Filters = ({
       [name]: value,
     }));
   };
-  console.log(filters, "state");
 
   const handleFilterClick = () => {
     setToglefilter(false);

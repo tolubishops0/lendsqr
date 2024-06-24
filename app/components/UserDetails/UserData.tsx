@@ -41,7 +41,7 @@ const userData = ({ userId }: UserDataProps) => {
         </Link>
         <div className="top-header-content">
           <div className="page-title">
-            <h3 className="page-title-header">Users</h3>
+            <h3 className="page-title-header">User</h3>
           </div>
           <div className="button-use-container">
             <button className="btn-user blacklist">Blacklist User</button>

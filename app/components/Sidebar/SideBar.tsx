@@ -22,7 +22,10 @@ const SideBar = ({
         <AnimatePresence mode="wait" initial={false}>
           {toggleSideBar && (
             <motion.div {...framerSidebarPanel} className="sidebar-sm">
-              <SideBarListSm />
+              <SideBarListSm
+                toggleSideBar={toggleSideBar}
+                handleToggleSidebar={handleToggleSidebar}
+              />
             </motion.div>
           )}
         </AnimatePresence>

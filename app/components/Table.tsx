@@ -75,7 +75,6 @@ const Table = ({ dataList }: DataProps) => {
     setCurrentPage(1);
   };
 
-  console.log(filters);
 
   const filteredData = dataList.filter((item) => {
     const expectedEmail = `${item.firstName.toLowerCase()}@${item.company.toLowerCase()}.com`;

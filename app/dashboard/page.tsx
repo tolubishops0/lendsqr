@@ -7,7 +7,7 @@ import Users from "../components/User/User";
 import "../styles/globals.scss";
 
 const Dashboard = () => {
-  const [toggleSideBar, setTogleSideBar] = useState<boolean>(true);
+  const [toggleSideBar, setTogleSideBar] = useState<boolean>(false);
   const handleToggleSidebar = (): void => {
     setTogleSideBar(!toggleSideBar);
   };
