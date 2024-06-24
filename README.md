@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#LendQR Assessment Project
+
+This project is a job application assessment for LendQR. It involves building a Next.js application with TypeScript that includes four pages: Login, Dashboard, User page, and User details page. The project requirements are as follows:
+
+-Build the 4 pages: Login, Dashboard, User page, and User details page.
+-The user pages should pull data from a mock API with 500 records.
+-Use local storage or IndexedDB to store and retrieve user -details on the user details page.
+-The pages must be mobile responsive.
+-Some details are intentionally left out of this instruction set. The candidate should be able to spot and address them.
+
+
+
+## Prerequisites
+
+Make sure you have the following installed before getting started:
+
+- [Node.js](https://nodejs.org/) (version 18+)
+- [pnpm](https://pnpm.io/)
+- [Git](https://git-scm.com/)
+In the project directory, you can run:
+
+## Technologies
+-Next.js: Framework for server-rendered React applications.
+-TypeScript: JavaScript with static typing.
+-Sass: CSS pre-processor for styling.
+-Local Storage: For storing and retrieving user details.
+-Mock API: To simulate fetching user data.
+
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+#Usage
+-Login: Enter your credentials to access the dashboard.
+-Dashboard: View user statistics and insights.
+-Users: Browse through a list of users fetched from the mock API.
+-User Details: Click on a user to view their details, stored and retrieved from local storage or IndexedDB.
+
+#API
+The mock API with 500 records is used to fetch user data. The API endpoint is defined in pages/api/mockData.ts.
+
+#Responsive Design
+The application is designed to be fully responsive, ensuring a seamless experience across mobile and desktop devices.
+
+Storage
+User details on the User Details page are stored and retrieved using local storage or IndexedDB.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up and run the project on your local environment:
+
+### Step 1: Clone the Repository
+
+Clone the project repository and navigate to the project directory:
+
+```terminal
+git clone https://github.com/tolubishops0/lendsqr.git
+cd lendsqr
+```
+
+### **Step 2: Install Dependencies**
+
+Install the necessary project dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### **Step 3: Start the Development Server**
+
+Run the development server to start the application locally:
 
 ```bash
 npm run dev
 # or
-yarn dev
+yarn start
 # or
-pnpm dev
-# or
-bun dev
+pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Live Preview 
+[Link](https://tolu-okunjoyo-lendsqr-fe-test.netlify.app/)
