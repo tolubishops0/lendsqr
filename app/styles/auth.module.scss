@@ -45,12 +45,12 @@
       &_headercontainer {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
 
         &_header {
           color: $primary-header-color;
-          font-size: $auth-header-font-size;
+          font-size: 2rem;
           font-weight: $auth-header-font-weight;
           line-height: $auth-header-line-height;
           letter-spacing: $auth-header-letter-spacing;
@@ -58,7 +58,7 @@
 
         &_text {
           color: $secondary-header-color;
-          font-size: $secondary-header-font-size;
+          font-size: 1.5rem;
           font-weight: $secondary-header-font-weight;
           line-height: $secondary-header-line-height;
           margin-top: 0.5rem;
@@ -93,9 +93,9 @@
 
   &_logocontainer {
     position: fixed;
+    width: 40%;
     top: 10%;
     left: 8%;
-    // width: 20%;
     animation: leftFadeLogo 2s ease 0s 1 normal forwards;
     @keyframes leftFadeLogo {
       0% {
@@ -137,6 +137,29 @@
           gap: 1.2rem;
           width: 85%;
         }
+
+        &_headercontainer {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+
+          &_header {
+            color: $primary-header-color;
+            font-size: $auth-header-font-size;
+            font-weight: $auth-header-font-weight;
+            line-height: $auth-header-line-height;
+            letter-spacing: $auth-header-letter-spacing;
+          }
+
+          &_text {
+            color: $secondary-header-color;
+            font-size: $secondary-header-font-size;
+            font-weight: $secondary-header-font-weight;
+            line-height: $secondary-header-line-height;
+            margin-top: 0.5rem;
+          }
+        }
       }
 
       &_imgcontainer {
@@ -167,5 +190,8 @@
         }
       }
     }
+  }
+  &_logocontainer {
+    width: fit-content;
   }
 }

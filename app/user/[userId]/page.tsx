@@ -1,13 +1,16 @@
 "use client";
-
 import React, { useState } from "react";
-import Header from "../components/Header/Header";
-import SideBar from "../components/Sidebar/SideBar";
-import Users from "../components/User/User";
-import "../styles/globals.scss";
+import { useParams } from "next/navigation";
+import SideBar from "@/app/components/Sidebar/SideBar";
+import Header from "@/app/components/Header/Header";
+import UserData from "@/app/components/UserDetails/UserData";
+import "../../styles/componentStyles.scss";
 
-const Dashboard = () => {
+const UserDetails = () => {
+  const { userId } = useParams();
   const [toggleSideBar, setTogleSideBar] = useState<boolean>(false);
+  const parsedUserId = Array.isArray(userId) ? userId[0] : userId;
+
   const handleToggleSidebar = (): void => {
     setTogleSideBar(!toggleSideBar);
   };
@@ -22,9 +25,9 @@ const Dashboard = () => {
         toggleSideBar={toggleSideBar}
         handleToggleSidebar={handleToggleSidebar}
       />
-      <Users />
+      <UserData userId={parsedUserId} />
     </div>
   );
 };
 
-export default Dashboard;
+export default UserDetails;

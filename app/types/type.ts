@@ -54,9 +54,10 @@ export interface DataDetails {
   dataJoined: string;
   educationLevel: string;
   guarantorEmail: string;
-  guarantorName: string;
+  guarantorLastName: string;
+  guarantorFirstName: string;
   guarantorNumber: string;
-  guarantorRel: string;
+  guarantorRel: string | undefined;
 
   lastName: string;
   loanRepayment: string;
@@ -66,4 +67,18 @@ export interface DataDetails {
   residence: string;
   userId: string;
   userTeir: string;
+  length?: number;
+  bvn: number;
+  employmentSector: string;
+}
+
+export interface FiltersProps {
+  handleFilterChange: (filters: {
+    name: string;
+    email: string;
+    organization: string;
+    date: string;
+    status: string;
+    phoneNumber: string;
+  }) => void;
 }

@@ -6,8 +6,13 @@ import signin from "../../public/assets/signinimg.svg";
 import org from "../../public/assets/switcorgicon.svg";
 import arrdown from "../../public/assets/arrdown.svg";
 import moreicn from "../../public/assets/moreicn.svg";
+import rightarr from "../../public/assets/rightarricn.svg";
+import leftarr from "../../public/assets/leftarricn.svg";
 
 import dashbrd from "../../public/assets/dashbrdicn.svg";
+import activateusericn from "../../public/assets/activateusericn.svg";
+import backlisticn from "../../public/assets/backlisticn.svg";
+import viewdetailsicn from "../../public/assets/viewdetailsicn.svg";
 
 //NAVBAR
 import searchicn from "../../public/assets/serachicn.svg";
@@ -16,6 +21,8 @@ import avatar from "../../public/assets/avatar.svg";
 import avdownarricn from "../../public/assets/avdownarricn.svg";
 import menuicn from "../../public/assets/menuicn.svg";
 import filtericn from "../../public/assets/filtericn.svg";
+import arrdownblueicn from "../../public/assets/arrdownblueicn.svg";
+import calendaricn from "../../public/assets/calendaricn.svg";
 
 //SIDEBAR
 // CUSTOMERS
@@ -37,6 +44,11 @@ import servicsicn from "../../public/assets/servicsicn.svg";
 import serviceaccicn from "../../public/assets/serviceaccicn.svg";
 import settlementsicn from "../../public/assets/settlementsicn.svg";
 import reportsicn from "../../public/assets/reportsicn.svg";
+import backarrowicn from "../../public/assets/backarrow.svg";
+import emptyavatatricnicn from "../../public/assets/emptyavatatricn.svg";
+import divider from "../../public/assets/divider.svg";
+import system from "../../public/assets/systemicn.svg";
+import signout from "../../public/assets/signouticn.svg";
 
 //SETTINGS
 import preficn from "../../public/assets/preficn.svg";
@@ -48,6 +60,9 @@ import userdashbrdicn from "../../public/assets/userdashbrdicn.svg";
 import acusericn from "../../public/assets/acusericn.svg";
 import userloansicn from "../../public/assets/userloansicn.svg";
 import usersavingsicn from "../../public/assets/usersavingsicn.svg";
+import emptystarticn from "../../public/assets/emptystart.svg";
+import fullstarticn from "../../public/assets/full star.svg";
+import line2icn from "../../public/assets/Line 2.svg";
 
 //AUTH SCREEN
 export const logoimg = logo;
@@ -58,6 +73,15 @@ export const avatararricn = avdownarricn;
 export const searchicon = searchicn;
 export const bell = bellicn;
 export const menu = menuicn;
+export const emptyavatatricn = emptyavatatricnicn;
+export const ptystart = emptystarticn;
+export const fullstart = fullstarticn;
+export const line2 = line2icn;
+export const divericn = divider;
+export const signouticn = signout;
+export const systemicn = system;
+export const calendar = calendaricn;
+export const arrdownblue = arrdownblueicn;
 
 //TABLE
 export const filter = filtericn;
@@ -68,6 +92,11 @@ export const more = moreicn;
 export const sworgicn = org;
 export const arrdownicn = arrdown;
 export const dashbrdicn = dashbrd;
+export const rightarricn = rightarr;
+export const leftarricn = leftarr;
+
+//DETAILS SCREEN
+export const backarrow = backarrowicn;
 
 export const cutomersFeature: SiderBarListProps[] = [
   {
@@ -157,6 +186,22 @@ export const settings: SiderBarListProps[] = [
     icon: auditlogsicn,
   },
 ];
+
+export const viewmore: SiderBarListProps[] = [
+  {
+    label: "View Details",
+    icon: viewdetailsicn,
+  },
+  {
+    label: "Blacklist User",
+    icon: backlisticn,
+  },
+  {
+    label: "Activate User",
+    icon: activateusericn,
+  },
+];
+
 export const userCard: UserCardListProps[] = [
   {
     label: "USERS",
@@ -187,4 +232,12 @@ export const dashboardTableData = [
   "Phone number",
   "Date joined",
   "Status",
+];
+export const bankAcctivity = [
+  "General Details",
+  "Documents",
+  "Bank Details",
+  "Loans",
+  "Savings",
+  "App and System",
 ];

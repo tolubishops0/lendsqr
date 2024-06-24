@@ -4,6 +4,7 @@ import { SideBarToggleProps } from "@/app/types/type";
 import { useClickAway } from "react-use";
 import { AnimatePresence, motion } from "framer-motion";
 import SideBarList from "./SideBarList";
+import SideBarListSm from "./SideBarListSm";
 
 const SideBar = ({
   toggleSideBar,
@@ -21,7 +22,10 @@ const SideBar = ({
         <AnimatePresence mode="wait" initial={false}>
           {toggleSideBar && (
             <motion.div {...framerSidebarPanel} className="sidebar-sm">
-              <SideBarList />
+              <SideBarListSm
+                toggleSideBar={toggleSideBar}
+                handleToggleSidebar={handleToggleSidebar}
+              />
             </motion.div>
           )}
         </AnimatePresence>
