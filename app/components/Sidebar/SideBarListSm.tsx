@@ -65,7 +65,7 @@ const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
     } else {
       setUpdateSodebarlist(settings);
     }
-  }, [pathname]);
+  }, [pathname, settingLastTab]);
 
   return (
     <div>
