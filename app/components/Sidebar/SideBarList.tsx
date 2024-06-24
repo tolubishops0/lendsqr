@@ -35,7 +35,7 @@ const SideBarList = () => {
     } else {
       setUpdateSodebarlist(settings);
     }
-  }, [pathname]);
+  }, [pathname, settingLastTab]);
 
   const [activeNav, setActiveNav] = useState<string>("Users");
   const [toggleCustomerSubList, setToggleCustomerSubList] =

@@ -12,7 +12,7 @@ interface UserDataProps {
   userId: string | undefined;
 }
 
-const userData = ({ userId }: UserDataProps) => {
+const UserData = ({ userId }: UserDataProps) => {
   const [userData, setuserData] = useState<DataDetails[]>([]);
 
   useEffect(() => {
@@ -57,4 +57,4 @@ const userData = ({ userId }: UserDataProps) => {
   );
 };
 
-export default userData;
+export default UserData;
