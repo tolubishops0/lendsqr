@@ -146,11 +146,7 @@ function UserBioData({ userData }: DataProps) {
             </div>
             <div className="bio-key-value edu">
               <p className="bio-key">Relationship</p>
-              <p className="bio-value">
-                {data &&
-                  data?.guarantorRel?.charAt(0)?.toUpperCase() +
-                    data?.guarantorRel?.slice(1)}
-              </p>
+              <p className="bio-value">{data?.guarantorRel}</p>
             </div>
           </div>
         </div>

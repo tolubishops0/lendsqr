@@ -9,7 +9,7 @@ import { DataDetails } from "@/app/types/type";
 import UserBioData from "./UserBioData";
 
 interface UserDataProps {
-  userId: string;
+  userId: string | undefined;
 }
 
 const userData = ({ userId }: UserDataProps) => {

@@ -6,13 +6,11 @@ import Header from "@/app/components/Header/Header";
 import UserData from "@/app/components/UserDetails/UserData";
 import "../../styles/componentStyles.scss";
 
-interface UserDataProps {
-  userId: string;
-}
 const UserDetails = () => {
   const { userId } = useParams();
   const [toggleSideBar, setTogleSideBar] = useState<boolean>(false);
-  
+  const parsedUserId = Array.isArray(userId) ? userId[0] : userId;
+
   const handleToggleSidebar = (): void => {
     setTogleSideBar(!toggleSideBar);
   };
@@ -27,7 +25,7 @@ const UserDetails = () => {
         toggleSideBar={toggleSideBar}
         handleToggleSidebar={handleToggleSidebar}
       />
-      <UserData userId={userId} />
+      <UserData userId={parsedUserId} />
     </div>
   );
 };
