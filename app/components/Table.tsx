@@ -38,10 +38,15 @@ const Table = ({ dataList }: DataProps) => {
     phoneNumber: "",
   });
 
-  const refClickAway = useRef<HTMLDivElement>(null);
-  useClickAway(refClickAway, () => {
-    if (toggleViewMore || toggleFilter) {
+  const refClickViewMoreAway = useRef<HTMLDivElement>(null);
+  useClickAway(refClickViewMoreAway, () => {
+    if (toggleViewMore) {
       setTogleViewMore(!toggleViewMore);
+    }
+  });
+  const refClickFilterAway = useRef<HTMLDivElement>(null);
+  useClickAway(refClickFilterAway, () => {
+    if (toggleFilter) {
       setToglefilter(!toggleFilter);
     }
   });
@@ -69,6 +74,8 @@ const Table = ({ dataList }: DataProps) => {
     setFilters(newFilters);
     setCurrentPage(1);
   };
+
+  console.log(filters);
 
   const filteredData = dataList.filter((item) => {
     const expectedEmail = `${item.firstName.toLowerCase()}@${item.company.toLowerCase()}.com`;
@@ -190,7 +197,7 @@ const Table = ({ dataList }: DataProps) => {
   const ViewMorecontainer = () => {
     return (
       <div
-        ref={refClickAway}
+        ref={refClickViewMoreAway}
         className="view-more-container"
         style={{
           position: "fixed",
@@ -215,12 +222,16 @@ const Table = ({ dataList }: DataProps) => {
   return (
     <div className="table-section">
       {toggleViewMore && <ViewMorecontainer />}
+
       {toggleFilter && (
-        <Filters
-          ref={refClickAway}
-          dataList={dataList}
-          onFilterChange={handleFilterChange}
-        />
+        <div ref={refClickFilterAway}>
+          <Filters
+            setToglefilter={setToglefilter}
+            toggleFilter={toggleFilter}
+            dataList={dataList}
+            handleFilterChange={handleFilterChange}
+          />
+        </div>
       )}
       <div className="table-data">
         <table className="table">

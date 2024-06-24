@@ -21,6 +21,8 @@ import avatar from "../../public/assets/avatar.svg";
 import avdownarricn from "../../public/assets/avdownarricn.svg";
 import menuicn from "../../public/assets/menuicn.svg";
 import filtericn from "../../public/assets/filtericn.svg";
+import arrdownblueicn from "../../public/assets/arrdownblueicn.svg";
+import calendaricn from "../../public/assets/calendaricn.svg";
 
 //SIDEBAR
 // CUSTOMERS
@@ -78,6 +80,8 @@ export const line2 = line2icn;
 export const divericn = divider;
 export const signouticn = signout;
 export const systemicn = system;
+export const calendar = calendaricn;
+export const arrdownblue = arrdownblueicn;
 
 //TABLE
 export const filter = filtericn;

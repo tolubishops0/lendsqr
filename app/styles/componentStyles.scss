@@ -791,11 +791,31 @@
   box-shadow: 3px 5px 20px 0px #0000000a;
   background-color: $bg-white-color;
   padding: 1.5rem 0.8rem;
-
+  .calenar {
+    position: relative;
+  }
+  .date-placeholder {
+    position: absolute;
+    text-transform: capitalize;
+    top: 52%;
+    left: 11%;
+    color: rgba($secondary-header-color, 0.7);
+    font-size: $inputfield-placeholder-font-size;
+    font-weight: $secondary-header-font-weight;
+    line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+  }
   .input-container {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+
+    select {
+      color: rgba($secondary-header-color, 0.7);
+      font-size: $inputfield-placeholder-font-size;
+      font-weight: $secondary-header-font-weight;
+      line-height: $inputfield-searchbar-placeholder-font-size-line-height;
+    }
+
     label {
       text-transform: capitalize;
       font-weight: $semi-bold-font-weight;
@@ -803,10 +823,19 @@
       line-height: $semi-small-line-height;
       color: $secondary-header-color;
     }
+    .custom-dropdown {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url("../../public/assets/arrdownblueicn.svg") no-repeat right
+        0.75rem center/1.5rem;
+      background-size: 0.7rem;
+    }
+
     .input-filters {
       width: 100%;
       height: 100%;
-      padding-left: 0.3rem;
+      padding-left: 1.3rem;
       outline: none;
       height: $auth-header-font-size;
       border-radius: $button-border-radius;
@@ -816,13 +845,25 @@
         outline: 0;
         border: 1px solid $primary-header-color;
       }
-
       &::placeholder {
+        text-transform: capitalize;
         color: rgba($secondary-header-color, 0.7);
         font-size: $inputfield-placeholder-font-size;
         font-weight: $secondary-header-font-weight;
         line-height: $inputfield-searchbar-placeholder-font-size-line-height;
       }
+    }
+    input[type="date"] {
+      background: url("../../public/assets/calendaricn.svg") no-repeat right
+        0.75rem center/1.5rem !important;
+      background-size: 0.8rem !important;
+    }
+    input[type="date"]::-webkit-datetime-edit-text,
+    input[type="date"]::-webkit-datetime-edit-month-field,
+    input[type="date"]::-webkit-datetime-edit-day-field,
+    input[type="date"]::-webkit-datetime-edit-year-field,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      opacity: 0;
     }
   }
   .filter-buttons-container {
@@ -1177,7 +1218,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
   }
   .filters {
     width: 26%;

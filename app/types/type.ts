@@ -73,7 +73,7 @@ export interface DataDetails {
 }
 
 export interface FiltersProps {
-  onFilterChange: (filters: {
+  handleFilterChange: (filters: {
     name: string;
     email: string;
     organization: string;

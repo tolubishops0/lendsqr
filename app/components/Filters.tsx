@@ -1,18 +1,23 @@
 "use client";
-import React, { useState, useEffect, ReactHTMLElement } from "react";
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { FiltersProps } from "../types/type";
 import { parseISO, format } from "date-fns";
 import "../styles/componentStyles.scss";
 import { DataDetails } from "../types/type";
+import { arrdownblue, calendar } from "../lib/lib";
 
 interface DataProps {
   dataList: DataDetails[];
-  onFilterChange: FiltersProps["onFilterChange"];
-  ref: string
+  handleFilterChange: FiltersProps["handleFilterChange"];
+  toggleFilter: boolean;
+  setToglefilter: Dispatch<SetStateAction<boolean>>;
 }
 
-const Filters = ({ onFilterChange, dataList, ref }: DataProps) => {
-  console.log(ref)
+const Filters = ({
+  handleFilterChange,
+  dataList,
+  setToglefilter,
+}: DataProps) => {
   const initialFilters = {
     name: "",
     email: "",
@@ -24,57 +29,63 @@ const Filters = ({ onFilterChange, dataList, ref }: DataProps) => {
 
   const [filters, setFilters] = useState(initialFilters);
   const [orgs, setOrgs] = useState<string[]>([]);
+  const [status, setStatus] = useState<string[]>([]);
 
   useEffect(() => {
     const extractedOr = Array.from(
       new Set(dataList.map((item) => item.company))
     );
+    const extractedStatus = Array.from(
+      new Set(dataList.map((item) => item.status))
+    );
     setOrgs(extractedOr);
+    setStatus(extractedStatus);
   }, [dataList]);
-
 
   const handleChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
     const { name, value } = e.target;
-
     setFilters((prevFilters) => ({
       ...prevFilters,
       [name]: value,
     }));
   };
+  console.log(filters, "state");
 
   const handleFilterClick = () => {
+    setToglefilter(false);
     const filteredPhoneNumber = filters.phoneNumber.startsWith("0")
       ? filters.phoneNumber.substring(1)
       : filters.phoneNumber;
 
-    const filteredDate = parseISO(filters.date);
-    const formattedDate = format(filteredDate, "yyyy-MM-dd");
-
-    onFilterChange({
+    handleFilterChange({
       ...filters,
       phoneNumber: filteredPhoneNumber,
-      date: formattedDate,
     });
   };
 
   const handleResetClick = () => {
     setFilters(initialFilters);
-    onFilterChange(initialFilters);
+    handleFilterChange(initialFilters);
   };
 
   return (
-    <div ref={ref} className="filters">
+    <div className="filters">
       <div className="input-container">
         <label className="table-header-content">Organization</label>
         <select
           name="organization"
           value={filters.organization}
           onChange={handleChange}
-          className="input-filters">
-          <option value="" disabled selected>
-            <p className="select">select</p>
+          className="input-filters custom-dropdown">
+          <option
+            value=""
+            className="select-paceholder"
+            selected
+            disabled
+            hidden>
+            Select
           </option>
           {orgs.map((item, index) => (
             <option key={index} value={item}>
@@ -105,16 +116,32 @@ const Filters = ({ onFilterChange, dataList, ref }: DataProps) => {
           className="input-filters"
         />
       </div>
-      <div className="input-container">
+      <div className="input-container calenar">
         <label className="table-header-content">date</label>
-        <input
-          type="date"
-          name="date"
-          placeholder="Date"
-          value={filters.date}
-          onChange={handleChange}
-          className="input-filters"
-        />
+        {filters.date ? (
+          <>
+            <input
+              type="date"
+              name="date"
+              placeholder="Date"
+              value={filters.date}
+              onChange={handleChange}
+              className="input-filters custom-calendar"
+            />
+            <p className="date-placeholder ">{filters.date}</p>
+          </>
+        ) : (
+          <>
+            <input
+              type="date"
+              name="date"
+              placeholder="Date"
+              onChange={handleChange}
+              className="input-filters custom-calendar calenar"
+            />
+            <p className="date-placeholder {">date</p>
+          </>
+        )}
       </div>
       <div className="input-container">
         <label className="table-header-content"> phone number</label>
@@ -129,14 +156,20 @@ const Filters = ({ onFilterChange, dataList, ref }: DataProps) => {
       </div>
       <div className="input-container">
         <label className="table-header-content"> status</label>
-        <input
-          type="text"
+        <select
           name="status"
-          placeholder="Status"
           value={filters.status}
           onChange={handleChange}
-          className="input-filters"
-        />
+          className="input-filters custom-dropdown">
+          <option value="" disabled selected hidden>
+            Select
+          </option>
+          {status.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="filter-buttons-container">
         <button className="filter-buttons reset" onClick={handleResetClick}>
