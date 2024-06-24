@@ -17,7 +17,6 @@ interface PaginationProps {
 const Pagination = ({
   currentPage,
   totalPages,
-  startIndex,
   dataListLength,
   itemsPerPage,
   onPageChange,

@@ -54,9 +54,10 @@ export interface DataDetails {
   dataJoined: string;
   educationLevel: string;
   guarantorEmail: string;
-  guarantorName: string;
+  guarantorLastName: string;
+  guarantorFirstName: string;
   guarantorNumber: string;
-  guarantorRel: string;
+  guarantorRel: string | undefined;
 
   lastName: string;
   loanRepayment: string;

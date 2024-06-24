@@ -24,8 +24,7 @@ function UserBioData({ userData }: DataProps) {
             <div className="bio-key-value">
               <p className="bio-key">FULL NAME</p>
               <p className="bio-value">
-                {data?.firstName}
-                {data?.lastName}
+                {` ${data?.firstName} ${data?.lastName}`}
               </p>
             </div>
 
@@ -62,10 +61,9 @@ function UserBioData({ userData }: DataProps) {
           </div>
         </div>
         <Image src={divericn} alt="divider-icon" className="line" />
-
         <div className="bio-data-sect ">
           <p className="bio-data-header">Education and Employment</p>
-          <div className=" education">
+          <div className="education">
             <div className="bio-key-value edu">
               <p className="bio-key">level of education</p>
               <p className="bio-value">{data?.educationLevel}</p>
@@ -101,7 +99,6 @@ function UserBioData({ userData }: DataProps) {
           </div>
         </div>
         <Image src={divericn} alt="divider-icon" className="line" />
-
         <div className="bio-data-sect">
           <p className="bio-data-header">Socials</p>
           <div className=" education">
@@ -127,13 +124,14 @@ function UserBioData({ userData }: DataProps) {
           </div>
         </div>
         <Image src={divericn} alt="divider-icon" className="line" />
-
         <div className="bio-data-sect ">
           <p className="bio-data-header">Guarantor</p>
           <div className=" education">
             <div className="bio-key-value edu">
               <p className="bio-key">full Name</p>
-              <p className="bio-value">{data?.guarantorName}</p>
+              <p className="bio-value">
+                {`${data?.guarantorFirstName} ${data?.guarantorLastName}`}
+              </p>
             </div>
 
             <div className="bio-key-value edu">
@@ -142,21 +140,28 @@ function UserBioData({ userData }: DataProps) {
             </div>
             <div className="bio-key-value edu">
               <p className="bio-key">Email Address</p>
-              <p className="bio-value">{data?.guarantorName.toLowerCase()}</p>
+              <p className="bio-value">
+                {`${data?.guarantorFirstName.toLowerCase()}@yahoo.com`}
+              </p>
             </div>
             <div className="bio-key-value edu">
               <p className="bio-key">Relationship</p>
-              <p className="bio-value">{`${data?.firstName.toLowerCase()}_${data?.lastName.toLowerCase()}`}</p>
+              <p className="bio-value">
+                {data &&
+                  data?.guarantorRel?.charAt(0)?.toUpperCase() +
+                    data?.guarantorRel?.slice(1)}
+              </p>
             </div>
           </div>
         </div>
         <Image src={divericn} alt="divider-icon" className="line" />
-
         <div className="bio-data-sect-last">
           <div className=" education">
             <div className="bio-key-value edu">
               <p className="bio-key">full Name</p>
-              <p className="bio-value">{data?.guarantorName}</p>
+              <p className="bio-value">
+                {`${data?.guarantorFirstName} ${data?.guarantorLastName}`}
+              </p>
             </div>
 
             <div className="bio-key-value edu">
@@ -165,7 +170,9 @@ function UserBioData({ userData }: DataProps) {
             </div>
             <div className="bio-key-value edu">
               <p className="bio-key">Email Address</p>
-              <p className="bio-value">{data?.guarantorName.toLowerCase()}</p>
+              <p className="bio-value">
+                {`${data?.guarantorFirstName.toLowerCase()}@yahoo.com`}
+              </p>
             </div>
             <div className="bio-key-value edu">
               <p className="bio-key">Relationship</p>

@@ -13,6 +13,7 @@ import Loader from "../Loader";
 
 const SignIn = () => {
   const router = useRouter();
+  const url = "https://run.mocky.io/v3/e5a836f4-e678-4cc0-b79e-0ca48d8af5fb";
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState({ email: "", password: "" });
@@ -51,9 +52,7 @@ const SignIn = () => {
   const getDataList = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(
-        "https://run.mocky.io/v3/4a123945-db55-4c3f-8a6e-50e7623a4fa0"
-      );
+      const response = await fetch(url);
       const data = await response?.json();
       localStorage.setItem("dashboardData", JSON.stringify(data));
       setIsLoading(false);

@@ -36,28 +36,29 @@ const UserBankdetails = ({ userData }: DataProps) => {
       <div className="userbank-container">
         <div className="userbank">
           <Image src={emptyavatatricn} alt="emptyavatatricn-icon" />
-          <div className="username">
-            <span className=" user-name">
-              <p>{data?.firstName}</p>
-              <p>{data?.lastName}</p>
-            </span>
-            <p className="user-id">{data?.userId}</p>
-          </div>
-          <Image src={line2} alt="line2-icon" className="vert-line" />
-          <div className="username">
-            <p className="user-tier">User's Tier</p>
-            <span>
-              <Image src={fullstart} alt="star-icon" />
-              <Image src={ptystart} alt="star-icon" />
-              <Image src={ptystart} alt="star-icon" />
-            </span>
-          </div>
-          <Image src={line2} alt="line2-icon" className="vert-line" />
-          <div className="username">
-            <p className="balance">{data?.balance}</p>
-            <span className="acct">
-              {data?.accNumber}/{data?.bank}
-            </span>
+          <div className="username-container">
+            <div className="username">
+              <span className=" user-name">
+                {`${data?.firstName} ${data?.lastName}`}
+              </span>
+              <p className="user-id">{data?.userId}</p>
+            </div>
+            <Image src={line2} alt="line2-icon" className="vert-line" />
+            <div className="username">
+              <p className="user-tier">User's Tier</p>
+              <span>
+                <Image src={fullstart} alt="star-icon" />
+                <Image src={ptystart} alt="star-icon" />
+                <Image src={ptystart} alt="star-icon" />
+              </span>
+            </div>
+            <Image src={line2} alt="line2-icon" className="vert-line" />
+            <div className="username">
+              <p className="balance">{data?.balance}</p>
+              <span className="acct">
+                {`${data?.accNumber}/${data?.bank}`}
+              </span>
+            </div>
           </div>
         </div>
         <div className="user-activity">

@@ -21,7 +21,7 @@ body {
 .grid_container {
   display: grid;
   height: 100vh;
-  grid-template-columns: 100% ;
+  grid-template-columns: 100%;
   grid-template-rows: 8.25rem 3fr;
   grid-template-areas: "header" "body";
 }
@@ -54,4 +54,19 @@ input {
     outline: 0;
     border: 0;
   }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e3e4e6;
+  border-radius: 100vw;
 }
