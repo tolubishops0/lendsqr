@@ -1,33 +1,32 @@
 @mixin respond-to($breakpoint) {
+    @if $breakpoint == xxsmall {
+    @media (max-width: 400px) {
+      @content;
+    }
+  }
     @if $breakpoint == xsmall {
-    @media (min-width: 350px) {
-      //if screen is small phone
+    @media (min-width: 400px) {
       @content;
     }
   }
   @if $breakpoint == small {
     @media (min-width: 500px) {
-      //if screen is small phone
       @content;
     }
   } @else if $breakpoint == medium {
     @media (min-width: 600px) {
-      //if screen is phone
       @content;
     }
   } @else if $breakpoint == base {
     @media (min-width: 768px) {
-      //if screen is minitab tab and larger
       @content;
     }
   } @else if $breakpoint == large {
     @media (min-width: 900px) {
-      //if screen is large tab and larger
       @content;
     }
   } @else if $breakpoint == xlarge {
     @media (min-width: 1100px) {
-      //if screen is desktop
       @content;
     }
   }

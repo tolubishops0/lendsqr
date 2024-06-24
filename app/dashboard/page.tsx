@@ -7,11 +7,10 @@ import Users from "../components/User/User";
 import "../styles/globals.scss";
 
 const Dashboard = () => {
-  const [toggleSideBar, setTogleSideBar] = useState<boolean>(false);
+  const [toggleSideBar, setTogleSideBar] = useState<boolean>(true);
   const handleToggleSidebar = (): void => {
     setTogleSideBar(!toggleSideBar);
   };
-
 
   return (
     <div className="grid_container">
