@@ -45,7 +45,7 @@ const UserBankdetails = ({ userData }: DataProps) => {
             </div>
             <Image src={line2} alt="line2-icon" className="vert-line" />
             <div className="username">
-              <p className="user-tier">User's Tier</p>
+              <p className="user-tier">User&#39;s Tier</p>
               <span>
                 <Image src={fullstart} alt="star-icon" />
                 <Image src={ptystart} alt="star-icon" />
@@ -55,9 +55,7 @@ const UserBankdetails = ({ userData }: DataProps) => {
             <Image src={line2} alt="line2-icon" className="vert-line" />
             <div className="username">
               <p className="balance">{data?.balance}</p>
-              <span className="acct">
-                {`${data?.accNumber}/${data?.bank}`}
-              </span>
+              <span className="acct">{`${data?.accNumber}/${data?.bank}`}</span>
             </div>
           </div>
         </div>
