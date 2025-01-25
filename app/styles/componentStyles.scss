@@ -222,7 +222,8 @@
   }
 
   .header-menu-container {
-    width: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .header-logo-container {
@@ -829,7 +830,8 @@
       span {
         color: $primary-header-color;
         font-weight: $secondary-header-font-weight;
-        font-size: $normal-font-size;
+        font-size: 12px;
+        // font-size: $normal-font-size;
         line-height: $normal-text-line-height;
       }
     }

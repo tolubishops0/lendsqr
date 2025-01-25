@@ -43,6 +43,7 @@ const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
   const handleSettingsSubListToggle = () => {
     setToggleSettingSubList(!toggleSettingSubList);
   };
+
   const handleLogout = () => {
     router.push("/");
     localStorage.removeItem("dashboardData");
@@ -67,8 +68,8 @@ const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
     }
   }, [pathname, settingLastTab]);
 
+
   return (
-    <div>
       <div className="sm-sidebar-container">
         <div className="sm-sidebar-headers">
           <div className="sidebar-header">
@@ -165,7 +166,6 @@ const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
