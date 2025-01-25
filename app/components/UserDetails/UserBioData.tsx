@@ -141,7 +141,7 @@ function UserBioData({ userData }: DataProps) {
             <div className="bio-key-value edu">
               <p className="bio-key">Email Address</p>
               <p className="bio-value">
-                {`${data?.guarantorFirstName.toLowerCase()}@yahoo.com`}
+                {`${data?.guarantorFirstName?.toLowerCase()}@yahoo.com`}
               </p>
             </div>
             <div className="bio-key-value edu">
@@ -167,7 +167,7 @@ function UserBioData({ userData }: DataProps) {
             <div className="bio-key-value edu">
               <p className="bio-key">Email Address</p>
               <p className="bio-value">
-                {`${data?.guarantorFirstName.toLowerCase()}@yahoo.com`}
+                {`${data?.guarantorFirstName?.toLowerCase()}@yahoo.com`}
               </p>
             </div>
             <div className="bio-key-value edu">

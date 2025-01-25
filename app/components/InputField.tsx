@@ -21,6 +21,7 @@ export const InputField = ({
             placeholder={placeholder}
             className="inutfield"
             onChange={onChange}
+            role="textbox"
           />
           {placeholder === "Password" && (
             <p onClick={() => setToggleIcon(!toggleIcon)}>
@@ -36,6 +37,7 @@ export const InputField = ({
             placeholder={placeholder}
             className="inutfield"
             onChange={onChange}
+            role="textbox"
           />
         </>
       )}
