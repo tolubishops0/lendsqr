@@ -70,92 +70,92 @@ const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
 
 
   return (
-      <div className="sm-sidebar-container">
-        <div className="sm-sidebar-headers">
-          <div className="sidebar-header">
-            <Image src={sworgicn} alt="switch-org-icon" />
-            <span>Switch Organization</span>
-            <Image src={arrdownicn} alt="switch-org-icon" />
-          </div>
-          <div className="sidebar-header">
-            <Image src={dashbrdicn} alt="Dashboard-icon" />
-            <span>Dashboard</span>
-          </div>
-          <div className="side-rows">
-            <div>
-              <div className="sidebar-header header-toggle">
-                <span onClick={handleCustomerSubListToggle}>CUSTOMER</span>
-                <Image src={arrdownicn} alt="switch-org-icon" />
-              </div>
-
-              {toggleCustomerSubList && (
-                <div className="sidebar-sublist-toggle">
-                  <ul className="">
-                    {cutomersFeature.map((item, index) => (
-                      <li
-                        onClick={() => handleNavLinkSelection(item.label)}
-                        key={index}
-                        className={`${
-                          activeNav === item.label ? "active-nav" : ""
-                        } `}>
-                        <div className="list-item-sm">
-                          <Image src={item.icon} alt="Dashboard-icon" />
-                          <span>{item.label}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <div className="sidebar-header header-toggle">
-                <span onClick={handleBusinessSubListToggle}>BUSINESSES</span>
-                <Image src={arrdownicn} alt="switch-org-icon" />
-              </div>
-              {toggleBusinessSubList && (
-                <div className="sidebar-sublist-toggle">
-                  <ul className="">
-                    {businessFeatures.map((item, index) => (
-                      <li
-                        onClick={() => handleNavLinkSelection(item.label)}
-                        key={index}
-                        className={`${
-                          activeNav === item.label ? "active-nav" : ""
-                        } `}>
-                        <div className="list-item-sm">
-                          <Image src={item.icon} alt="Dashboard-icon" />
-                          <span>{item.label}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <div className="sidebar-header header-toggle">
-                <span onClick={handleSettingsSubListToggle}>SETTINGS</span>
-                <Image src={arrdownicn} alt="switch-org-icon" />
-              </div>
-              {toggleSettingSubList && (
-                <div className="sidebar-sublist-toggle">
-                  <ul className="">
-                    {updateSideBarList?.map((item, index) => (
-                      <li
-                        onClick={() => handleNavLinkSelection(item.label)}
-                        key={index}
-                        className={`${
-                          activeNav === item.label ? "active-nav" : ""
-                        } `}>
-                        <div className="list-item-sm">
-                          <Image src={item.icon} alt="Dashboard-icon" />
-                          <span>{item.label}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+    <div className="sm-sidebar-container">
+      <div className="sm-sidebar-headers">
+        <div className="sidebar-header">
+          <Image src={sworgicn} alt="switch-org-icon" />
+          <span>Switch Organization</span>
+          <Image src={arrdownicn} alt="switch-org-icon" />
+        </div>
+        <div className="sidebar-header">
+          <Image src={dashbrdicn} alt="Dashboard-icon" />
+          <span>Dashboard</span>
+        </div>
+        <div className="side-rows">
+          <div>
+            <div className="sidebar-header header-toggle">
+              <span onClick={handleCustomerSubListToggle}>CUSTOMER</span>
+              <Image src={arrdownicn} alt="switch-org-icon" />
             </div>
+
+            {toggleCustomerSubList && (
+              <div className="sidebar-sublist-toggle">
+                <ul className="">
+                  {cutomersFeature.map((item, index) => (
+                    <li
+                      onClick={() => handleNavLinkSelection(item.label)}
+                      key={index}
+                      className={`${
+                        activeNav === item.label ? "active-nav" : ""
+                      } `}>
+                      <div className="list-item-sm">
+                        <Image src={item.icon} alt="Dashboard-icon" />
+                        <span>{item.label}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="sidebar-header header-toggle">
+              <span onClick={handleBusinessSubListToggle}>BUSINESSES</span>
+              <Image src={arrdownicn} alt="switch-org-icon" />
+            </div>
+            {toggleBusinessSubList && (
+              <div className="sidebar-sublist-toggle">
+                <ul className="">
+                  {businessFeatures.map((item, index) => (
+                    <li
+                      onClick={() => handleNavLinkSelection(item.label)}
+                      key={index}
+                      className={`${
+                        activeNav === item.label ? "active-nav" : ""
+                      } `}>
+                      <div className="list-item-sm">
+                        <Image src={item.icon} alt="Dashboard-icon" />
+                        <span>{item.label}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="sidebar-header header-toggle">
+              <span onClick={handleSettingsSubListToggle}>SETTINGS</span>
+              <Image src={arrdownicn} alt="switch-org-icon" />
+            </div>
+            {toggleSettingSubList && (
+              <div className="sidebar-sublist-toggle">
+                <ul className="">
+                  {updateSideBarList?.map((item, index) => (
+                    <li
+                      onClick={() => handleNavLinkSelection(item.label)}
+                      key={index}
+                      className={`${
+                        activeNav === item.label ? "active-nav" : ""
+                      } `}>
+                      <div className="list-item-sm">
+                        <Image src={item.icon} alt="Dashboard-icon" />
+                        <span>{item.label}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="logout-container">
               <div onClick={handleLogout} className="sidebar-header logout">
                 <Image src={signouticn} alt="divider-icon" />
@@ -166,6 +166,7 @@ const SideBarListSm = ({ handleToggleSidebar, toggleSideBar }: ToggleProps) => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
