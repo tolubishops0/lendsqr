@@ -1,6 +1,6 @@
 #LendQR Assessment Project
 
-This project is a job application assessment for LendQR. It involves building a Next.js application with TypeScript that includes four pages: Login, Dashboard, User page, and User details page. The project requirements are as follows:
+This is a Next.js application with TypeScript that includes four pages: Login, Dashboard, User page, and User details page. The project requirements are as follows:
 
 -Build the 4 pages: Login, Dashboard, User page, and User details page.
 -The user pages should pull data from a mock API with 500 records.
