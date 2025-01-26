@@ -55,7 +55,6 @@ const SearchBar = () => {
 
   const handleRouting = (e: any): void => {
     e.preventDefault();
-    console.log("clicked");
     if (pathname.includes("user")) {
       router.push(`/user/${userId}`);
     } else {
