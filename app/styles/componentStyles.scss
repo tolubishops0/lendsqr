@@ -222,7 +222,8 @@
   }
 
   .header-menu-container {
-    width: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .header-logo-container {
@@ -696,7 +697,7 @@
       justify-content: left;
       align-items: flex-start;
       column-gap: 3.5rem;
-      row-gap: 2.5rem;
+      row-gap: 3rem;
     }
     .edu {
       display: flex;
@@ -798,7 +799,7 @@
 .sm-sidebar-container {
   overflow-y: auto;
   .sm-sidebar-headers {
-    max-height: 80vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     row-gap: 3rem;
@@ -810,7 +811,7 @@
     }
 
     .logout-container {
-      margin-top: auto;
+      margin-top: 3rem;
       display: flex;
       flex-direction: column;
       row-gap: 1rem;
@@ -829,7 +830,8 @@
       span {
         color: $primary-header-color;
         font-weight: $secondary-header-font-weight;
-        font-size: $normal-font-size;
+        font-size: 12px;
+        // font-size: $normal-font-size;
         line-height: $normal-text-line-height;
       }
     }

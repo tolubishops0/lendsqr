@@ -12,7 +12,7 @@ const Header = ({ handleToggleSidebar, toggleSideBar }: SideBarToggleProps) => {
     <header className="header">
       <div className="header-inner">
         <div className="header-container">
-          <div className="header-logo-container-sm  ">
+          <div className="header-logo-container-sm ">
             {toggleSideBar ? (
               <div className="header-logo-container">
                 <Image layout="responsive" src={logoimg} alt="logo" />
@@ -21,7 +21,7 @@ const Header = ({ handleToggleSidebar, toggleSideBar }: SideBarToggleProps) => {
               <div
                 className="header-menu-container"
                 onClick={handleToggleSidebar}>
-                <Image layout="responsive" src={menu} alt="logo" />
+                <Image layout="responsive" src={menu} alt="logo"/>
               </div>
             )}
           </div>

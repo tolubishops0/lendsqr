@@ -13,7 +13,8 @@ import Loader from "../Loader";
 
 const SignIn = () => {
   const router = useRouter();
-  const url = "https://run.mocky.io/v3/f05513be-810c-4ed9-a942-f15b19680803";
+  const url = "api/userlist";
+  // const url = "https://run.mocky.io/v3/e5a836f4-e678-4cc0-b79e-0ca48d8af5fb";
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState({ email: "", password: "" });
@@ -54,6 +55,7 @@ const SignIn = () => {
     try {
       const response = await fetch(url);
       const data = await response?.json();
+      console.log(data, "data");
       localStorage.setItem("dashboardData", JSON.stringify(data));
       setIsLoading(false);
       toast.success("signed in successfully");
@@ -77,7 +79,7 @@ const SignIn = () => {
       {isLoadng && <Loader />}
       <div className={style.signin}>
         <div className={style.signin_logocontainer}>
-          <Image layout="responsive" src={logoimg} alt="logo" />
+          <Image src={logoimg} alt="logo" />
         </div>
         <main className={style.signin_maincontainer}>
           <div className={style.signin_maincontainer_imgcontainer}>
@@ -85,7 +87,6 @@ const SignIn = () => {
               src={signinimg}
               className={style.signin_maincontainer_imgcontainer_image}
               alt="signin-img"
-              layout="responsive"
             />
           </div>
 
@@ -146,7 +147,7 @@ const SignIn = () => {
                 }>
                 Forgot password?
               </span>
-              <Button text={"LOG IN"} className="button-signup" />
+              <Button text="LOG IN" className="button-signup" />
             </form>
           </section>
         </main>
