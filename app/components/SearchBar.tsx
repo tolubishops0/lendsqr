@@ -45,10 +45,17 @@ const SearchBar = () => {
     setSearchTerm(item.firstName.toLowerCase());
     setUserId(item.id);
     setIsSearchTerm(true);
+
+    if (pathname.includes("user")) {
+      router.push(`/user/${item.id}`);
+    } else {
+      router.push(`/user/${item.id}`);
+    }
   };
 
   const handleRouting = (e: any): void => {
     e.preventDefault();
+    console.log("clicked");
     if (pathname.includes("user")) {
       router.push(`/user/${userId}`);
     } else {
